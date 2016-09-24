@@ -21469,6 +21469,20 @@
 	          )
 	        )
 	      )
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "row" },
+	      _react2.default.createElement(
+	        "button",
+	        null,
+	        "Login"
+	      ),
+	      _react2.default.createElement(
+	        "button",
+	        null,
+	        "Register"
+	      )
 	    )
 	  );
 	};

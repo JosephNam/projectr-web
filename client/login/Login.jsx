@@ -14,6 +14,10 @@ const Login = () => (
         </div>
       </htmlForm>
     </div>
+    <div className="row">
+      <button>Login</button>
+      <button>Register</button>
+    </div>
   </div>
 )
 
