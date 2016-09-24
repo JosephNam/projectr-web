@@ -27150,7 +27150,7 @@
 /* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -27160,55 +27160,50 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRouter = __webpack_require__(172);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var propTypes = {
 	  login: _react.PropTypes.function
 	};
 
-	var goToSignup = function goToSignup() {
-	  return _reactRouter.browserHistory.push('/signup');
-	};
 	var Login = function Login(props) {
 	  return _react2.default.createElement(
-	    'div',
-	    { className: 'container' },
+	    "div",
+	    { className: "container" },
 	    _react2.default.createElement(
-	      'div',
-	      { className: 'row' },
+	      "div",
+	      { className: "row" },
 	      _react2.default.createElement(
-	        'htmlForm',
-	        { className: 'col s12' },
+	        "htmlForm",
+	        { className: "col s12" },
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
+	          "div",
+	          { className: "row" },
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'input-field col s6' },
-	            _react2.default.createElement('input', { placeholder: 'email', id: 'email', type: 'text', className: 'validate' })
+	            "div",
+	            { className: "input-field col s6" },
+	            _react2.default.createElement("input", { placeholder: "email", id: "email", type: "text", className: "validate" })
 	          ),
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'input-field col s6' },
-	            _react2.default.createElement('input', { placeholder: 'password', id: 'password', type: 'password', className: 'validate' })
+	            "div",
+	            { className: "input-field col s6" },
+	            _react2.default.createElement("input", { placeholder: "password", id: "password", type: "password", className: "validate" })
 	          )
 	        )
 	      )
 	    ),
 	    _react2.default.createElement(
-	      'div',
-	      { className: 'row' },
+	      "div",
+	      { className: "row" },
 	      _react2.default.createElement(
-	        'button',
-	        { onClick: props.login },
-	        'Login'
+	        "button",
+	        { className: "btn", onClick: props.login },
+	        "Login"
 	      ),
 	      _react2.default.createElement(
-	        'button',
-	        { onClick: goToSignup },
-	        'Sign Up'
+	        "a",
+	        { className: "btn", href: "/app/signup" },
+	        "Sign Up"
 	      )
 	    )
 	  );
@@ -27269,7 +27264,7 @@
 	      { className: "row" },
 	      _react2.default.createElement(
 	        "button",
-	        { onClick: props.register },
+	        { className: "btn", onClick: props.register },
 	        "Register"
 	      )
 	    )

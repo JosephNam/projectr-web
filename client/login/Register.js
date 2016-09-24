@@ -19,7 +19,7 @@ const Register = props => (
       </htmlForm>
     </div>
     <div className="row">
-      <button onClick={props.register}>Register</button>
+      <button className="btn" onClick={props.register}>Register</button>
     </div>
   </div>
 )

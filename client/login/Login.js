@@ -1,11 +1,9 @@
 import React, { PropTypes } from 'react'
-import { browserHistory } from 'react-router'
 
 const propTypes = {
   login: PropTypes.function
 }
 
-const goToSignup = () => browserHistory.push('/signup')
 const Login = props => (
   <div className="container">
     <div className="row">
@@ -21,8 +19,8 @@ const Login = props => (
       </htmlForm>
     </div>
     <div className="row">
-      <button onClick={props.login}>Login</button>
-      <button onClick={goToSignup}>Sign Up</button>
+      <button className="btn" onClick={props.login}>Login</button>
+      <a className="btn" href="/app/signup">Sign Up</a>
     </div>
   </div>
 )
