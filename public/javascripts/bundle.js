@@ -54,13 +54,13 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _Login = __webpack_require__(172);
+
+	var _Login2 = _interopRequireDefault(_Login);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(
-	  'div',
-	  null,
-	  ' Hello '
-	), document.getElementById('content'));
+	_reactDom2.default.render(_react2.default.createElement(_Login2.default, null), document.getElementById('content')); /* global document: true */
 
 /***/ },
 /* 1 */
@@ -21427,6 +21427,53 @@
 
 	module.exports = ReactDOMNullInputValuePropHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Login = function Login() {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "container" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "row" },
+	      _react2.default.createElement(
+	        "htmlForm",
+	        { className: "col s12" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "row" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "input-field col s6" },
+	            _react2.default.createElement("input", { placeholder: "email", id: "email", type: "text", className: "validate" })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "input-field col s6" },
+	            _react2.default.createElement("input", { placeholder: "password", id: "password", type: "password", className: "validate" })
+	          )
+	        )
+	      )
+	    )
+	  );
+	};
+
+	exports.default = Login;
 
 /***/ }
 /******/ ]);
