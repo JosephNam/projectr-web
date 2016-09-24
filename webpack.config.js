@@ -1,8 +1,8 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 
 var BUILD_DIR = path.resolve(__dirname, 'public/javascripts');
-var APP_DIR = path.resolve(__dirname, 'client/app');
+var APP_DIR = path.resolve(__dirname, 'client');
 
 var config = {
   entry: APP_DIR + '/index.js',
@@ -15,7 +15,11 @@ var config = {
       {
         test : [/\.js?/, /\.jsx?/],
         include : APP_DIR,
-        loader : 'babel'
+        loader : 'babel',
+        query:
+          {
+            presets:['react']
+          }
       }
     ]
   }
