@@ -1,4 +1,5 @@
 const express = require('express')
+require('babel-core/register')
 const path = require('path')
 const logger = require('morgan')
 const cookieParser = require('cookie-parser')
