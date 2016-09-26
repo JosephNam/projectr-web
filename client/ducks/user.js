@@ -1,4 +1,6 @@
 /* global fetch: true */
+import { Map } from 'immutable'
+
 const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
 const REQUEST_LOGIN = 'REQUEST_LOGIN'
 
@@ -70,3 +72,20 @@ export const tryRegister = (email, pw) => (
     .catch(err => console.log(err))
   }
 )
+
+const initialState = new Map({
+  user: null,
+  pw: null,
+  isLoading: false
+})
+
+export default function user(state = initialState, action) {
+  switch (action.type) {
+    case REQUEST_LOGIN:
+      return state.set('isLoading', true)
+    case RECEIVE_LOGIN:
+      return state.set('user', action.user).set('pw', action.pw)
+    default:
+      return state
+  }
+}
