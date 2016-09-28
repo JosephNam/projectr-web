@@ -28757,30 +28757,34 @@
 	  };
 	};
 
-	var receiveLogin = exports.receiveLogin = function receiveLogin(email, pw) {
+	var receiveLogin = exports.receiveLogin = function receiveLogin(token, email, pw) {
+	  console.log(token);
 	  return {
 	    type: RECEIVE_LOGIN,
+	    token: token,
 	    email: email,
 	    pw: pw
 	  };
 	};
 
-	var tryLogin = exports.tryLogin = function tryLogin(email, pw) {
+	var tryLogin = exports.tryLogin = function tryLogin(username, password) {
 	  return function (dispatch) {
 	    dispatch(requestLogin());
 	    console.log('trying login');
-	    return fetch('/api/login', {
+	    return fetch('http://localhost:1337/api/authenticate', {
 	      method: 'POST',
 	      headers: {
 	        Accept: 'application/json',
 	        'Content-Type': 'application/json'
 	      },
 	      body: (0, _stringify2.default)({
-	        email: email,
-	        pw: pw
+	        username: username,
+	        password: password
 	      })
 	    }).then(function (res) {
-	      return dispatch(receiveLogin(res.body.email, res.body.pw));
+	      return res.json();
+	    }).then(function (json) {
+	      return dispatch(receiveLogin(json.token, username, password));
 	    }).catch(function (error) {
 	      return console.log('network fetch failed', error);
 	    });
@@ -28801,22 +28805,27 @@
 	  };
 	};
 
-	var tryRegister = exports.tryRegister = function tryRegister(email, pw) {
+	var tryRegister = exports.tryRegister = function tryRegister(username, password, firstName, lastName, email) {
 	  return function (dispatch) {
 	    dispatch(requestRegister());
 	    console.log('requesting register');
-	    return fetch('/api/register', {
+	    return fetch('http://localhost:1337/api/register', {
 	      method: 'POST',
 	      headers: {
 	        Accept: 'application/json',
 	        'Content-Type': 'application/json'
 	      },
 	      body: (0, _stringify2.default)({
-	        email: email,
-	        pw: pw
+	        username: username,
+	        password: password,
+	        firstName: firstName,
+	        lastName: lastName,
+	        email: email
 	      })
 	    }).then(function (res) {
-	      return receiveRegister(res.body.email, res.body.pw);
+	      return res.json();
+	    }).then(function (json) {
+	      return receiveRegister(username, json.password, firstName, lastName, email);
 	    }).catch(function (err) {
 	      return console.log(err);
 	    });
@@ -33894,6 +33903,26 @@
 	  value: true
 	});
 
+	var _getPrototypeOf = __webpack_require__(278);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(303);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(304);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(308);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(355);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -33908,43 +33937,108 @@
 	  register: _react.PropTypes.function
 	};
 
-	var RegisterPage = function RegisterPage(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'container' },
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'row' },
-	      _react2.default.createElement(
-	        'htmlForm',
-	        { className: 'col s12' },
+	var RegisterPage = function (_React$Component) {
+	  (0, _inherits3.default)(RegisterPage, _React$Component);
+
+	  function RegisterPage(props) {
+	    (0, _classCallCheck3.default)(this, RegisterPage);
+
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (RegisterPage.__proto__ || (0, _getPrototypeOf2.default)(RegisterPage)).call(this, props));
+
+	    _this.state = {
+	      username: '',
+	      password: '',
+	      firstName: '',
+	      lastName: '',
+	      email: ''
+	    };
+	    _this.handleInputChange = _this.handleInputChange.bind(_this);
+	    _this.handleRegisterSubmit = _this.handleRegisterSubmit.bind(_this);
+	    return _this;
+	  }
+
+	  (0, _createClass3.default)(RegisterPage, [{
+	    key: 'handleInputChange',
+	    value: function handleInputChange(event) {
+	      console.log(event.target.id);
+	      console.log(event.target.value);
+	      this.state['' + event.target.id] = event.target.value;
+	    }
+	  }, {
+	    key: 'handleRegisterSubmit',
+	    value: function handleRegisterSubmit() {
+	      var username = this.state.username;
+	      var password = this.state.password;
+	      var firstName = this.state.firstName;
+	      var lastName = this.state.lastName;
+	      var email = this.state.email;
+	      this.props.register(username, password, firstName, lastName, email);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'container' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'input-field col s6' },
-	            _react2.default.createElement('input', { placeholder: 'email', id: 'email', type: 'text', className: 'validate' })
-	          ),
+	            'htmlForm',
+	            { className: 'col s12' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'row' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'input-field col s6' },
+	                _react2.default.createElement('input', { onChange: this.handleInputChange, placeholder: 'username', id: 'username', type: 'text', className: 'validate' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'input-field col s6' },
+	                _react2.default.createElement('input', { onChange: this.handleInputChange, placeholder: 'password', id: 'password', type: 'password', className: 'validate' })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'row' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'input-field col s6' },
+	                _react2.default.createElement('input', { onChange: this.handleInputChange, placeholder: 'firstName', id: 'firstName', type: 'text', className: 'validate' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'input-field col s6' },
+	                _react2.default.createElement('input', { onChange: this.handleInputChange, placeholder: 'lastName', id: 'lastName', type: 'text', className: 'validate' })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'row' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'input-field col s6' },
+	                _react2.default.createElement('input', { onChange: this.handleInputChange, placeholder: 'email', id: 'email', type: 'text', className: 'validate' })
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'input-field col s6' },
-	            _react2.default.createElement('input', { placeholder: 'password', id: 'password', type: 'password', className: 'validate' })
+	            'button',
+	            { className: 'btn', onClick: this.handleRegisterSubmit },
+	            'Register'
 	          )
 	        )
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'row' },
-	      _react2.default.createElement(
-	        'button',
-	        { className: 'btn', onClick: props.register },
-	        'Register'
-	      )
-	    )
-	  );
-	};
+	      );
+	    }
+	  }]);
+	  return RegisterPage;
+	}(_react2.default.Component);
 
 	RegisterPage.propTypes = propTypes;
 
@@ -33954,8 +34048,8 @@
 
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
-	    register: function register(user, pw) {
-	      return dispatch((0, _user.tryRegister)(user, pw));
+	    register: function register(user, pw, firstName, lastName, email) {
+	      return dispatch((0, _user.tryRegister)(user, pw, firstName, lastName, email));
 	    }
 	  };
 	};

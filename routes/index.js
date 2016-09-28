@@ -12,9 +12,6 @@ const router = new express.Router()
 /* GET home page. */
 router.get('/app*', (req, res) => {
   match({ routes: routes.default, location: req.url }, (error, redirectLocation, renderProps) => {
-    console.log('store is', routes.default)
-    console.log('url is', req.url)
-    console.log('redirect location is', redirectLocation)
     if (error) {
       res.status(500).send(error.message)
     } else if (redirectLocation) {

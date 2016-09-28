@@ -13,30 +13,33 @@ export const requestLogin = () => (
   }
 )
 
-export const receiveLogin = (email, pw) => (
-  {
+export const receiveLogin = (token, email, pw) => {
+  console.log(token)
+  return {
     type: RECEIVE_LOGIN,
+    token,
     email,
     pw
   }
-)
+}
 
-export const tryLogin = (email, pw) => (
+export const tryLogin = (username, password) => (
   (dispatch) => {
     dispatch(requestLogin())
     console.log('trying login')
-    return fetch('/api/login', {
+    return fetch('http://localhost:1337/api/authenticate', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email,
-        pw
+        username,
+        password
       })
     })
-    .then(res => dispatch(receiveLogin(res.body.email, res.body.pw)))
+    .then(res => res.json())
+    .then(json => dispatch(receiveLogin(json.token, username, password)))
     .catch(error => console.log('network fetch failed', error))
   }
 )
@@ -55,22 +58,26 @@ export const receiveRegister = (email, pw) => (
   }
 )
 
-export const tryRegister = (email, pw) => (
+export const tryRegister = (username, password, firstName, lastName, email) => (
   (dispatch) => {
     dispatch(requestRegister())
     console.log('requesting register')
-    return fetch('/api/register', {
+    return fetch('http://localhost:1337/api/register', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email,
-        pw
+        username,
+        password,
+        firstName,
+        lastName,
+        email
       })
     })
-    .then(res => receiveRegister(res.body.email, res.body.pw))
+    .then(res => res.json())
+    .then(json => receiveRegister(username, json.password, firstName, lastName, email))
     .catch(err => console.log(err))
   }
 )
