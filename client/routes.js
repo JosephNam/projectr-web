@@ -1,13 +1,15 @@
 import React from 'react'
-import { Route } from 'react-router'
-import Login from '../client/login/Login'
-import Register from '../client/login/Register'
+import { Router, Route } from 'react-router'
+import { LoginContainer } from './user/LoginContainer'
+import { RegisterContainer } from './user/RegisterContainer'
 
 const routes = (
-  <Route path="/app">
-    <Route path="login" component={Login} />
-    <Route path="signup" component={Register} />
-  </Route>
+  <Router>
+    <Route path="/app">
+      <Route path="login" component={LoginContainer} />
+      <Route path="signup" component={RegisterContainer} />
+    </Route>
+  </Router>
 )
 
 export default routes

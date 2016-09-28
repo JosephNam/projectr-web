@@ -24,6 +24,7 @@ export const receiveLogin = (email, pw) => (
 export const tryLogin = (email, pw) => (
   (dispatch) => {
     dispatch(requestLogin())
+    console.log('trying login')
     return fetch('/api/login', {
       method: 'POST',
       headers: {
@@ -57,6 +58,7 @@ export const receiveRegister = (email, pw) => (
 export const tryRegister = (email, pw) => (
   (dispatch) => {
     dispatch(requestRegister())
+    console.log('requesting register')
     return fetch('/api/register', {
       method: 'POST',
       headers: {
@@ -74,17 +76,46 @@ export const tryRegister = (email, pw) => (
 )
 
 const initialState = new Map({
-  user: null,
-  pw: null,
+  user: {
+    email: null,
+    pw: null
+  },
   isLoading: false
 })
 
-export default function user(state = initialState, action) {
+
+function login(state = initialState, action) {
   switch (action.type) {
     case REQUEST_LOGIN:
       return state.set('isLoading', true)
     case RECEIVE_LOGIN:
-      return state.set('user', action.user).set('pw', action.pw)
+      return state.set('user', action.user).set('isLoading', false)
+    default:
+      return state
+  }
+}
+
+function register(state = initialState, action) {
+  switch (action.type) {
+    case REQUEST_REGISTER:
+      return state.set('isLoading', true)
+    case RECEIVE_REGISTER:
+      return state.set('user', action.user).set('isLoading', false)
+    default:
+      return state
+  }
+}
+
+export default function user(state = initialState, action) {
+  switch (action.type) {
+    case REQUEST_LOGIN:
+      return login(state, action)
+    case RECEIVE_LOGIN:
+      return login(state, action)
+    case REQUEST_REGISTER:
+      return register(state, action)
+    case RECEIVE_REGISTER:
+      return register(state, action)
     default:
       return state
   }

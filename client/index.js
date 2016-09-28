@@ -1,12 +1,29 @@
 /* global document: true */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, browserHistory } from 'react-router'
+import { Provider } from 'react-redux'
+import { Router, Route, browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 
-import routes from './routes'
+import LoginContainer from './user/LoginContainer'
+import RegisterContainer from './user/RegisterContainer'
+import store from './Store'
 
-const CustomRouter = () => (
-  <Router history={browserHistory} routes={routes} />
+const history = syncHistoryWithStore(browserHistory, store, {
+  selectLocationState(state) {
+    return state.get('routing').toJS()
+  }
+})
+
+const Root = () => (
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path="/app">
+        <Route path="login" component={LoginContainer} />
+        <Route path="signup" component={RegisterContainer} />
+      </Route>
+    </Router>
+  </Provider>
 )
 
-ReactDOM.render(<CustomRouter />, document.body)
+ReactDOM.render(<Root />, document.getElementById('content'))

@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { tryRegister } from '../ducks/user'
 
 const propTypes = {
-  login: PropTypes.function
+  register: PropTypes.function
 }
 
-const Login = props => (
+const RegisterPage = props => (
   <div className="container">
     <div className="row">
       <htmlForm className="col s12">
@@ -19,12 +21,26 @@ const Login = props => (
       </htmlForm>
     </div>
     <div className="row">
-      <button className="btn" onClick={props.login}>Login</button>
-      <a className="btn" href="/app/signup">Sign Up</a>
+      <button className="btn" onClick={props.register}>Register</button>
     </div>
   </div>
 )
 
-Login.propTypes = propTypes
+RegisterPage.propTypes = propTypes
 
-export default Login
+const mapStateToProps = () => (
+  {}
+)
+
+const mapDispatchToProps = dispatch => (
+  {
+    register: (user, pw) => dispatch(tryRegister(user, pw))
+  }
+)
+
+const RegisterContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegisterPage)
+
+export default RegisterContainer
