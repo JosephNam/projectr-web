@@ -77,8 +77,8 @@ const mapStateToProps = () => ({})
 
 const mapDispatchToProps = dispatch => (
   {
-    register: (user, pw, firstName, lastName, email) => dispatch(
-      tryRegister(user, pw, firstName, lastName, email))
+    register: (user, pw, firstName, lastName, email) =>
+     dispatch(tryRegister(user, pw, firstName, lastName, email))
   }
 )
 

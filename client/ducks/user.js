@@ -38,9 +38,10 @@ export const tryLogin = (username, password) => (
         password
       })
     })
+    .catch(error => console.log('network fetch failed', error))
     .then(res => res.json())
     .then(json => dispatch(receiveLogin(json.token, username, password)))
-    .catch(error => console.log('network fetch failed', error))
+    .then(console.log('you are logged in'))
   }
 )
 
@@ -78,6 +79,7 @@ export const tryRegister = (username, password, firstName, lastName, email) => (
     })
     .then(res => res.json())
     .then(json => receiveRegister(username, json.password, firstName, lastName, email))
+    .then(console.log('congragulations you have registered'))
     .catch(err => console.log(err))
   }
 )

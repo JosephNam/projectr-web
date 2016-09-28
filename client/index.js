@@ -6,6 +6,7 @@ import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
 import LoginContainer from './user/LoginContainer'
+import CreateProject from './project/CreateProject'
 import RegisterContainer from './user/RegisterContainer'
 import store from './Store'
 
@@ -21,6 +22,7 @@ const Root = () => (
       <Route path="/app">
         <Route path="login" component={LoginContainer} />
         <Route path="signup" component={RegisterContainer} />
+        <Route path="createProject" component={CreateProject} />
       </Route>
     </Router>
   </Provider>
