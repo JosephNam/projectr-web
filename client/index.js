@@ -8,6 +8,8 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import LoginContainer from './user/LoginContainer'
 import CreateProject from './project/CreateProject'
 import RegisterContainer from './user/RegisterContainer'
+import DashboardContainer from './dashboard/DashboardContainer'
+
 import store from './Store'
 
 const history = syncHistoryWithStore(browserHistory, store, {
@@ -23,6 +25,7 @@ const Root = () => (
         <Route path="login" component={LoginContainer} />
         <Route path="signup" component={RegisterContainer} />
         <Route path="createProject" component={CreateProject} />
+        <Route path="dashboard" component={DashboardContainer} />
       </Route>
     </Router>
   </Provider>

@@ -64,26 +64,30 @@
 
 	var _LoginContainer2 = _interopRequireDefault(_LoginContainer);
 
-	var _CreateProject = __webpack_require__(379);
+	var _CreateProject = __webpack_require__(352);
 
 	var _CreateProject2 = _interopRequireDefault(_CreateProject);
 
-	var _RegisterContainer = __webpack_require__(352);
+	var _RegisterContainer = __webpack_require__(353);
 
 	var _RegisterContainer2 = _interopRequireDefault(_RegisterContainer);
 
-	var _Store = __webpack_require__(353);
+	var _DashboardContainer = __webpack_require__(354);
+
+	var _DashboardContainer2 = _interopRequireDefault(_DashboardContainer);
+
+	var _Store = __webpack_require__(356);
 
 	var _Store2 = _interopRequireDefault(_Store);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/* global document: true */
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, _Store2.default, {
 	  selectLocationState: function selectLocationState(state) {
 	    return state.get('routing').toJS();
 	  }
-	}); /* global document: true */
-
+	});
 
 	var Root = function Root() {
 	  return _react2.default.createElement(
@@ -97,7 +101,8 @@
 	        { path: '/app' },
 	        _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _LoginContainer2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'signup', component: _RegisterContainer2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: 'createProject', component: _CreateProject2.default })
+	        _react2.default.createElement(_reactRouter.Route, { path: 'createProject', component: _CreateProject2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'dashboard', component: _DashboardContainer2.default })
 	      )
 	    )
 	  );
@@ -35816,6 +35821,160 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var propTypes = {
+	  tryCreateProject: _react.PropTypes.function
+	}; /* global document: true */
+	/* global $: true */
+
+	var CreateProject = function (_React$Component) {
+	  (0, _inherits3.default)(CreateProject, _React$Component);
+
+	  function CreateProject(props) {
+	    (0, _classCallCheck3.default)(this, CreateProject);
+
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (CreateProject.__proto__ || (0, _getPrototypeOf2.default)(CreateProject)).call(this, props));
+
+	    _this.handleInputChange = _this.handleInputChange.bind(_this);
+	    _this.handleSubmission = _this.handleSubmission.bind(_this);
+	    _this.state = {
+	      projectName: ''
+	    };
+	    return _this;
+	  }
+
+	  (0, _createClass3.default)(CreateProject, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.state = this.state;
+	      $(document).ready(function () {
+	        return $('select').material_select();
+	      });
+	    }
+	  }, {
+	    key: 'handleInputChange',
+	    value: function handleInputChange(event) {
+	      this.state['' + event.target.id] = event.target.value;
+	    }
+	  }, {
+	    key: 'handleSubmission',
+	    value: function handleSubmission() {
+	      this.props.tryCreateProject(this.state);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'container' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'htmlForm',
+	            { className: 'col s12' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'row' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'input-field col s6' },
+	                _react2.default.createElement('input', { onChange: this.handleInputChange, placeholder: 'Project Name', id: 'projectName', type: 'text', className: 'validate' })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'input-field col s6' },
+	                _react2.default.createElement(
+	                  'select',
+	                  { multiple: true, placeholder: 'Tags' },
+	                  _react2.default.createElement(
+	                    'option',
+	                    { value: 'tag1' },
+	                    'Tag 1'
+	                  ),
+	                  _react2.default.createElement(
+	                    'option',
+	                    { value: 'tag2' },
+	                    'Tag 2'
+	                  ),
+	                  _react2.default.createElement(
+	                    'option',
+	                    { value: 'tag3' },
+	                    'Tag 3'
+	                  ),
+	                  _react2.default.createElement(
+	                    'option',
+	                    { value: 'tag4' },
+	                    'Tag 4'
+	                  )
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'row' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'input-field col s12' },
+	                _react2.default.createElement('textArea', { className: 'materialize-textarea', onChange: this.handleInputChange, placeholder: 'Project Description', id: 'textArea', type: 'password' })
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'btn', onClick: this.handleRegisterSubmit },
+	            'Create Project'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	  return CreateProject;
+	}(_react2.default.Component);
+
+	CreateProject.propTypes = propTypes;
+
+	exports.default = CreateProject;
+
+/***/ },
+/* 353 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _getPrototypeOf = __webpack_require__(262);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(288);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(289);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(293);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(340);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _reactRedux = __webpack_require__(172);
 
 	var _user = __webpack_require__(348);
@@ -35948,7 +36107,7 @@
 	exports.default = RegisterContainer;
 
 /***/ },
-/* 353 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35957,15 +36116,148 @@
 	  value: true
 	});
 
-	var _reduxImmutable = __webpack_require__(354);
+	var _getPrototypeOf = __webpack_require__(262);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(288);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(289);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(293);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(340);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _UserInfo = __webpack_require__(355);
+
+	var _UserInfo2 = _interopRequireDefault(_UserInfo);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var DashboardComponent = function (_React$Component) {
+	  (0, _inherits3.default)(DashboardComponent, _React$Component);
+
+	  function DashboardComponent(props) {
+	    (0, _classCallCheck3.default)(this, DashboardComponent);
+
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (DashboardComponent.__proto__ || (0, _getPrototypeOf2.default)(DashboardComponent)).call(this, props));
+
+	    _this.state = {};
+	    return _this;
+	  }
+
+	  (0, _createClass3.default)(DashboardComponent, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          ' Hello World '
+	        ),
+	        _react2.default.createElement(_UserInfo2.default, null)
+	      );
+	    }
+	  }]);
+	  return DashboardComponent;
+	}(_react2.default.Component);
+
+	exports.default = DashboardComponent;
+
+/***/ },
+/* 355 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var UserInfo = function UserInfo() {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "row" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "col s12 m6" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "card blue-grey darken-1" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "card-content white-text" },
+	          _react2.default.createElement(
+	            "span",
+	            { className: "card-title" },
+	            "Card Title"
+	          ),
+	          _react2.default.createElement(
+	            "p",
+	            null,
+	            "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively."
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "card-action" },
+	          _react2.default.createElement(
+	            "a",
+	            { href: "#" },
+	            "This is a link"
+	          ),
+	          _react2.default.createElement(
+	            "a",
+	            { href: "#" },
+	            "This is a link"
+	          )
+	        )
+	      )
+	    )
+	  );
+	};
+
+	exports.default = UserInfo;
+
+/***/ },
+/* 356 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _reduxImmutable = __webpack_require__(357);
 
 	var _redux = __webpack_require__(179);
 
-	var _reduxThunk = __webpack_require__(360);
+	var _reduxThunk = __webpack_require__(363);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _RouteReducer = __webpack_require__(361);
+	var _RouteReducer = __webpack_require__(364);
 
 	var _RouteReducer2 = _interopRequireDefault(_RouteReducer);
 
@@ -35985,7 +36277,7 @@
 	exports.default = store;
 
 /***/ },
-/* 354 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35995,7 +36287,7 @@
 	});
 	exports.combineReducers = undefined;
 
-	var _combineReducers2 = __webpack_require__(355);
+	var _combineReducers2 = __webpack_require__(358);
 
 	var _combineReducers3 = _interopRequireDefault(_combineReducers2);
 
@@ -36004,7 +36296,7 @@
 	exports.combineReducers = _combineReducers3.default;
 
 /***/ },
-/* 355 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -36017,7 +36309,7 @@
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _utilities = __webpack_require__(356);
+	var _utilities = __webpack_require__(359);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36057,7 +36349,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 356 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36068,15 +36360,15 @@
 	});
 	exports.validateNextState = exports.getUnexpectedInvocationParameterMessage = exports.getStateName = undefined;
 
-	var _getStateName2 = __webpack_require__(357);
+	var _getStateName2 = __webpack_require__(360);
 
 	var _getStateName3 = _interopRequireDefault(_getStateName2);
 
-	var _getUnexpectedInvocationParameterMessage2 = __webpack_require__(358);
+	var _getUnexpectedInvocationParameterMessage2 = __webpack_require__(361);
 
 	var _getUnexpectedInvocationParameterMessage3 = _interopRequireDefault(_getUnexpectedInvocationParameterMessage2);
 
-	var _validateNextState2 = __webpack_require__(359);
+	var _validateNextState2 = __webpack_require__(362);
 
 	var _validateNextState3 = _interopRequireDefault(_validateNextState2);
 
@@ -36087,7 +36379,7 @@
 	exports.validateNextState = _validateNextState3.default;
 
 /***/ },
-/* 357 */
+/* 360 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -36103,7 +36395,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 358 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36116,7 +36408,7 @@
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _getStateName = __webpack_require__(357);
+	var _getStateName = __webpack_require__(360);
 
 	var _getStateName2 = _interopRequireDefault(_getStateName);
 
@@ -36151,7 +36443,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 359 */
+/* 362 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -36172,7 +36464,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 360 */
+/* 363 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -36200,7 +36492,7 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 361 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36228,177 +36520,6 @@
 	  }
 	  return state;
 	};
-
-/***/ },
-/* 362 */,
-/* 363 */,
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */,
-/* 368 */,
-/* 369 */,
-/* 370 */,
-/* 371 */,
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */,
-/* 377 */,
-/* 378 */,
-/* 379 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _getPrototypeOf = __webpack_require__(262);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(288);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(289);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(293);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(340);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var propTypes = {
-	  tryCreateProject: _react.PropTypes.function
-	}; /* global document: true */
-	/* global $: true */
-
-	var CreateProject = function (_React$Component) {
-	  (0, _inherits3.default)(CreateProject, _React$Component);
-
-	  function CreateProject(props) {
-	    (0, _classCallCheck3.default)(this, CreateProject);
-
-	    var _this = (0, _possibleConstructorReturn3.default)(this, (CreateProject.__proto__ || (0, _getPrototypeOf2.default)(CreateProject)).call(this, props));
-
-	    _this.handleInputChange = _this.handleInputChange.bind(_this);
-	    _this.handleSubmission = _this.handleSubmission.bind(_this);
-	    _this.state = {
-	      projectName: ''
-	    };
-	    return _this;
-	  }
-
-	  (0, _createClass3.default)(CreateProject, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.state = this.state;
-	      $(document).ready(function () {
-	        return $('select').material_select();
-	      });
-	    }
-	  }, {
-	    key: 'handleInputChange',
-	    value: function handleInputChange(event) {
-	      this.state['' + event.target.id] = event.target.value;
-	    }
-	  }, {
-	    key: 'handleSubmission',
-	    value: function handleSubmission() {
-	      this.props.tryCreateProject(this.state);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'container' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'htmlForm',
-	            { className: 'col s12' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'row' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'input-field col s6' },
-	                _react2.default.createElement('input', { onChange: this.handleInputChange, placeholder: 'Project Name', id: 'projectName', type: 'text', className: 'validate' })
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'input-field col s6' },
-	                _react2.default.createElement(
-	                  'select',
-	                  { multiple: true, placeholder: 'Tags' },
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: 'tag1' },
-	                    'Tag 1'
-	                  ),
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: 'tag2' },
-	                    'Tag 2'
-	                  ),
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: 'tag3' },
-	                    'Tag 3'
-	                  ),
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: 'tag4' },
-	                    'Tag 4'
-	                  )
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'row' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'input-field col s12' },
-	                _react2.default.createElement('textArea', { className: 'materialize-textarea', onChange: this.handleInputChange, placeholder: 'Project Description', id: 'textArea', type: 'password' })
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'btn', onClick: this.handleRegisterSubmit },
-	            'Create Project'
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	  return CreateProject;
-	}(_react2.default.Component);
-
-	CreateProject.propTypes = propTypes;
-
-	exports.default = CreateProject;
 
 /***/ }
 /******/ ]);
