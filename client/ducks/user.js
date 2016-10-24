@@ -15,6 +15,7 @@ export const requestLogin = () => (
 
 export const receiveLogin = (token, email, pw) => {
   console.log(token)
+  window.location = '/app/dashboard'
   return {
     type: RECEIVE_LOGIN,
     token,

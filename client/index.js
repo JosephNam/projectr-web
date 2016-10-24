@@ -9,6 +9,7 @@ import LoginContainer from './user/LoginContainer'
 import CreateProject from './project/CreateProject'
 import RegisterContainer from './user/RegisterContainer'
 import DashboardContainer from './dashboard/DashboardContainer'
+import ProjectMatchContainer from './match/ProjectMatchContainer'
 
 import store from './Store'
 
@@ -26,6 +27,7 @@ const Root = () => (
         <Route path="signup" component={RegisterContainer} />
         <Route path="createProject" component={CreateProject} />
         <Route path="dashboard" component={DashboardContainer} />
+        <Route path="match" component={ProjectMatchContainer} />
       </Route>
     </Router>
   </Provider>
