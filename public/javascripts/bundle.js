@@ -72,15 +72,15 @@
 
 	var _RegisterContainer2 = _interopRequireDefault(_RegisterContainer);
 
-	var _DashboardContainer = __webpack_require__(354);
+	var _DashboardContainer = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./dashboard/DashboardContainer\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _DashboardContainer2 = _interopRequireDefault(_DashboardContainer);
 
-	var _ProjectMatchContainer = __webpack_require__(366);
+	var _ProjectMatchContainer = __webpack_require__(354);
 
 	var _ProjectMatchContainer2 = _interopRequireDefault(_ProjectMatchContainer);
 
-	var _Store = __webpack_require__(356);
+	var _Store = __webpack_require__(360);
 
 	var _Store2 = _interopRequireDefault(_Store);
 
@@ -36146,592 +36146,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRouter = __webpack_require__(195);
-
-	var _UserInfo = __webpack_require__(355);
-
-	var _UserInfo2 = _interopRequireDefault(_UserInfo);
-
-	var _ProjectInfo = __webpack_require__(365);
-
-	var _ProjectInfo2 = _interopRequireDefault(_ProjectInfo);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var DashboardComponent = function (_React$Component) {
-	  (0, _inherits3.default)(DashboardComponent, _React$Component);
-
-	  function DashboardComponent(props) {
-	    (0, _classCallCheck3.default)(this, DashboardComponent);
-
-	    var _this = (0, _possibleConstructorReturn3.default)(this, (DashboardComponent.__proto__ || (0, _getPrototypeOf2.default)(DashboardComponent)).call(this, props));
-
-	    _this.state = {};
-	    return _this;
-	  }
-
-	  (0, _createClass3.default)(DashboardComponent, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'container' },
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          ' Your Dashboard '
-	        ),
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { className: 'btn', to: '/app/match' },
-	          ' Find me some projects '
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col s6' },
-	            _react2.default.createElement(_UserInfo2.default, null),
-	            _react2.default.createElement(
-	              'a',
-	              null,
-	              ' Create New Project '
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col s6' },
-	            _react2.default.createElement(_ProjectInfo2.default, null)
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	  return DashboardComponent;
-	}(_react2.default.Component);
-
-	exports.default = DashboardComponent;
-
-/***/ },
-/* 355 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var UserInfo = function UserInfo() {
-	  return _react2.default.createElement(
-	    "div",
-	    { className: "row" },
-	    _react2.default.createElement(
-	      "div",
-	      { className: "col s12" },
-	      _react2.default.createElement(
-	        "div",
-	        { className: "card blue-grey darken-1" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "card-content white-text" },
-	          _react2.default.createElement(
-	            "span",
-	            { className: "card-title" },
-	            "Test User"
-	          ),
-	          _react2.default.createElement(
-	            "p",
-	            null,
-	            " Test description lorem ipsum alskdjalksdj "
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "card-action" },
-	          _react2.default.createElement(
-	            "a",
-	            { className: "btn", href: "#" },
-	            "View Profile"
-	          ),
-	          _react2.default.createElement(
-	            "a",
-	            { className: "btn", href: "#" },
-	            "Edit Profile"
-	          )
-	        )
-	      )
-	    )
-	  );
-	};
-
-	exports.default = UserInfo;
-
-/***/ },
-/* 356 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _reduxImmutable = __webpack_require__(357);
-
-	var _redux = __webpack_require__(179);
-
-	var _reduxThunk = __webpack_require__(363);
-
-	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-	var _RouteReducer = __webpack_require__(364);
-
-	var _RouteReducer2 = _interopRequireDefault(_RouteReducer);
-
-	var _user = __webpack_require__(348);
-
-	var _user2 = _interopRequireDefault(_user);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var store = (0, _redux.createStore)((0, _reduxImmutable.combineReducers)({
-	  user: _user2.default,
-	  routing: _RouteReducer2.default
-	}), (0, _redux.applyMiddleware)(_reduxThunk2.default));
-
-	console.log(store.getState());
-
-	exports.default = store;
-
-/***/ },
-/* 357 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.combineReducers = undefined;
-
-	var _combineReducers2 = __webpack_require__(358);
-
-	var _combineReducers3 = _interopRequireDefault(_combineReducers2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.combineReducers = _combineReducers3.default;
-
-/***/ },
-/* 358 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _immutable = __webpack_require__(351);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var _utilities = __webpack_require__(359);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function (reducers) {
-	    var reducerKeys = Object.keys(reducers);
-
-	    // eslint-disable-next-line space-infix-ops
-	    return function () {
-	        var inputState = arguments.length <= 0 || arguments[0] === undefined ? _immutable2.default.Map() : arguments[0];
-	        var action = arguments[1];
-
-	        // eslint-disable-next-line no-process-env
-	        if (process.env.NODE_ENV !== 'production') {
-	            var warningMessage = (0, _utilities.getUnexpectedInvocationParameterMessage)(inputState, reducers, action);
-
-	            if (warningMessage) {
-	                // eslint-disable-next-line no-console
-	                console.error(warningMessage);
-	            }
-	        }
-
-	        return inputState.withMutations(function (temporaryState) {
-	            reducerKeys.forEach(function (reducerName) {
-	                var reducer = reducers[reducerName];
-	                var currentDomainState = temporaryState.get(reducerName);
-	                var nextDomainState = reducer(currentDomainState, action);
-
-	                (0, _utilities.validateNextState)(nextDomainState, reducerName, action);
-
-	                temporaryState.set(reducerName, nextDomainState);
-	            });
-	        });
-	    };
-	};
-
-	module.exports = exports['default'];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
-/* 359 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	'create index';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.validateNextState = exports.getUnexpectedInvocationParameterMessage = exports.getStateName = undefined;
-
-	var _getStateName2 = __webpack_require__(360);
-
-	var _getStateName3 = _interopRequireDefault(_getStateName2);
-
-	var _getUnexpectedInvocationParameterMessage2 = __webpack_require__(361);
-
-	var _getUnexpectedInvocationParameterMessage3 = _interopRequireDefault(_getUnexpectedInvocationParameterMessage2);
-
-	var _validateNextState2 = __webpack_require__(362);
-
-	var _validateNextState3 = _interopRequireDefault(_validateNextState2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.getStateName = _getStateName3.default;
-	exports.getUnexpectedInvocationParameterMessage = _getUnexpectedInvocationParameterMessage3.default;
-	exports.validateNextState = _validateNextState3.default;
-
-/***/ },
-/* 360 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	exports.default = function (action) {
-	    return action && action.type === '@@redux/INIT' ? 'initialState argument passed to createStore' : 'previous state received by the reducer';
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 361 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _immutable = __webpack_require__(351);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var _getStateName = __webpack_require__(360);
-
-	var _getStateName2 = _interopRequireDefault(_getStateName);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/* eslint-disable lodash3/prefer-lodash-method */
-
-	exports.default = function (state, reducers, action) {
-	    var reducerNames = Object.keys(reducers);
-
-	    if (!reducerNames.length) {
-	        return 'Store does not have a valid reducer. Make sure the argument passed to combineReducers is an object whose values are reducers.';
-	    }
-
-	    var stateName = (0, _getStateName2.default)(action);
-
-	    if (!_immutable2.default.Iterable.isIterable(state)) {
-	        return 'The ' + stateName + ' is of unexpected type. Expected argument to be an instance of Immutable.Iterable with the following properties: "' + reducerNames.join('", "') + '".';
-	    }
-
-	    var unexpectedStatePropertyNames = state.keySeq().toArray().filter(function (name) {
-	        return !reducers.hasOwnProperty(name);
-	    });
-
-	    if (unexpectedStatePropertyNames.length > 0) {
-	        return 'Unexpected ' + (unexpectedStatePropertyNames.length === 1 ? 'property' : 'properties') + ' "' + unexpectedStatePropertyNames.join('", "') + '" found in ' + stateName + '. Expected to find one of the known reducer property names instead: "' + reducerNames.join('", "') + '". Unexpected properties will be ignored.';
-	    }
-
-	    return null;
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 362 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	exports.default = function (nextState, reducerName, action) {
-	    // eslint-disable-next-line no-undefined
-	    if (nextState === undefined) {
-	        throw new Error('Reducer "' + reducerName + '" returned undefined when handling "' + action.type + '" action. To ignore an action, you must explicitly return the previous state.');
-	    }
-
-	    return null;
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 363 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	function createThunkMiddleware(extraArgument) {
-	  return function (_ref) {
-	    var dispatch = _ref.dispatch;
-	    var getState = _ref.getState;
-	    return function (next) {
-	      return function (action) {
-	        if (typeof action === 'function') {
-	          return action(dispatch, getState, extraArgument);
-	        }
-
-	        return next(action);
-	      };
-	    };
-	  };
-	}
-
-	var thunk = createThunkMiddleware();
-	thunk.withExtraArgument = createThunkMiddleware;
-
-	exports['default'] = thunk;
-
-/***/ },
-/* 364 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _immutable = __webpack_require__(351);
-
-	var _reactRouterRedux = __webpack_require__(256);
-
-	var initialState = new _immutable.Map({
-	  locationBeforeTransitions: null
-	});
-
-	exports.default = function () {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	  var action = arguments[1];
-
-	  if (action.type === _reactRouterRedux.LOCATION_CHANGE) {
-	    return state.merge({
-	      locationBeforeTransitions: action.payload
-	    });
-	  }
-	  return state;
-	};
-
-/***/ },
-/* 365 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ProjectInfo = function ProjectInfo() {
-	  return _react2.default.createElement(
-	    "div",
-	    { className: "row" },
-	    _react2.default.createElement(
-	      "div",
-	      { className: "col s12" },
-	      _react2.default.createElement(
-	        "div",
-	        { className: "card blue-grey darken-1" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "card-content white-text" },
-	          _react2.default.createElement(
-	            "span",
-	            { className: "card-title" },
-	            "Test Projects"
-	          ),
-	          _react2.default.createElement(
-	            "ul",
-	            null,
-	            _react2.default.createElement(
-	              "li",
-	              null,
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card blue-grey darken-1" },
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "card-content white-text" },
-	                  _react2.default.createElement(
-	                    "span",
-	                    { className: "card-title" },
-	                    "Test Project1"
-	                  ),
-	                  _react2.default.createElement(
-	                    "p",
-	                    null,
-	                    " Test description lorem ipsum alskdjalksdj "
-	                  ),
-	                  _react2.default.createElement(
-	                    "a",
-	                    null,
-	                    " Test Tags "
-	                  )
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              "li",
-	              null,
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card blue-grey darken-1" },
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "card-content white-text" },
-	                  _react2.default.createElement(
-	                    "span",
-	                    { className: "card-title" },
-	                    "Test Project2"
-	                  ),
-	                  _react2.default.createElement(
-	                    "p",
-	                    null,
-	                    " Test description lorem ipsum alskdjalksdj "
-	                  ),
-	                  _react2.default.createElement(
-	                    "a",
-	                    null,
-	                    " Test Tags "
-	                  )
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              "li",
-	              null,
-	              _react2.default.createElement(
-	                "div",
-	                { className: "card blue-grey darken-1" },
-	                _react2.default.createElement(
-	                  "div",
-	                  { className: "card-content white-text" },
-	                  _react2.default.createElement(
-	                    "span",
-	                    { className: "card-title" },
-	                    "Test Project3"
-	                  ),
-	                  _react2.default.createElement(
-	                    "p",
-	                    null,
-	                    " Test description lorem ipsum alskdjalksdj "
-	                  ),
-	                  _react2.default.createElement(
-	                    "a",
-	                    null,
-	                    " Test Tags "
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "card-action" },
-	          _react2.default.createElement(
-	            "a",
-	            { className: "btn", href: "#" },
-	            "View Profile"
-	          ),
-	          _react2.default.createElement(
-	            "a",
-	            { className: "btn", href: "#" },
-	            "Edit Profile"
-	          )
-	        )
-	      )
-	    )
-	  );
-	};
-
-	exports.default = ProjectInfo;
-
-/***/ },
-/* 366 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _getPrototypeOf = __webpack_require__(262);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(288);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(289);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(293);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(340);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _chance = __webpack_require__(367);
+	var _chance = __webpack_require__(355);
 
 	var _chance2 = _interopRequireDefault(_chance);
 
@@ -36835,7 +36250,7 @@
 	ProjectMatchContainer.propTypes = propTypes;
 
 /***/ },
-/* 367 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(Buffer) {//  Chance.js 1.0.4
@@ -41785,10 +41200,10 @@
 	    }
 	})();
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(368).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(356).Buffer))
 
 /***/ },
-/* 368 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer, global) {/*!
@@ -41801,9 +41216,9 @@
 
 	'use strict'
 
-	var base64 = __webpack_require__(369)
-	var ieee754 = __webpack_require__(370)
-	var isArray = __webpack_require__(371)
+	var base64 = __webpack_require__(357)
+	var ieee754 = __webpack_require__(358)
+	var isArray = __webpack_require__(359)
 
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -43581,10 +42996,10 @@
 	  return val !== val // eslint-disable-line no-self-compare
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(368).Buffer, (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(356).Buffer, (function() { return this; }())))
 
 /***/ },
-/* 369 */
+/* 357 */
 /***/ function(module, exports) {
 
 	'use strict'
@@ -43699,7 +43114,7 @@
 
 
 /***/ },
-/* 370 */
+/* 358 */
 /***/ function(module, exports) {
 
 	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -43789,7 +43204,7 @@
 
 
 /***/ },
-/* 371 */
+/* 359 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -43798,6 +43213,288 @@
 	  return toString.call(arr) == '[object Array]';
 	};
 
+
+/***/ },
+/* 360 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _reduxImmutable = __webpack_require__(361);
+
+	var _redux = __webpack_require__(179);
+
+	var _reduxThunk = __webpack_require__(367);
+
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+	var _RouteReducer = __webpack_require__(368);
+
+	var _RouteReducer2 = _interopRequireDefault(_RouteReducer);
+
+	var _user = __webpack_require__(348);
+
+	var _user2 = _interopRequireDefault(_user);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var store = (0, _redux.createStore)((0, _reduxImmutable.combineReducers)({
+	  user: _user2.default,
+	  routing: _RouteReducer2.default
+	}), (0, _redux.applyMiddleware)(_reduxThunk2.default));
+
+	console.log(store.getState());
+
+	exports.default = store;
+
+/***/ },
+/* 361 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.combineReducers = undefined;
+
+	var _combineReducers2 = __webpack_require__(362);
+
+	var _combineReducers3 = _interopRequireDefault(_combineReducers2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.combineReducers = _combineReducers3.default;
+
+/***/ },
+/* 362 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _immutable = __webpack_require__(351);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var _utilities = __webpack_require__(363);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (reducers) {
+	    var reducerKeys = Object.keys(reducers);
+
+	    // eslint-disable-next-line space-infix-ops
+	    return function () {
+	        var inputState = arguments.length <= 0 || arguments[0] === undefined ? _immutable2.default.Map() : arguments[0];
+	        var action = arguments[1];
+
+	        // eslint-disable-next-line no-process-env
+	        if (process.env.NODE_ENV !== 'production') {
+	            var warningMessage = (0, _utilities.getUnexpectedInvocationParameterMessage)(inputState, reducers, action);
+
+	            if (warningMessage) {
+	                // eslint-disable-next-line no-console
+	                console.error(warningMessage);
+	            }
+	        }
+
+	        return inputState.withMutations(function (temporaryState) {
+	            reducerKeys.forEach(function (reducerName) {
+	                var reducer = reducers[reducerName];
+	                var currentDomainState = temporaryState.get(reducerName);
+	                var nextDomainState = reducer(currentDomainState, action);
+
+	                (0, _utilities.validateNextState)(nextDomainState, reducerName, action);
+
+	                temporaryState.set(reducerName, nextDomainState);
+	            });
+	        });
+	    };
+	};
+
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 363 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	'create index';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.validateNextState = exports.getUnexpectedInvocationParameterMessage = exports.getStateName = undefined;
+
+	var _getStateName2 = __webpack_require__(364);
+
+	var _getStateName3 = _interopRequireDefault(_getStateName2);
+
+	var _getUnexpectedInvocationParameterMessage2 = __webpack_require__(365);
+
+	var _getUnexpectedInvocationParameterMessage3 = _interopRequireDefault(_getUnexpectedInvocationParameterMessage2);
+
+	var _validateNextState2 = __webpack_require__(366);
+
+	var _validateNextState3 = _interopRequireDefault(_validateNextState2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.getStateName = _getStateName3.default;
+	exports.getUnexpectedInvocationParameterMessage = _getUnexpectedInvocationParameterMessage3.default;
+	exports.validateNextState = _validateNextState3.default;
+
+/***/ },
+/* 364 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function (action) {
+	    return action && action.type === '@@redux/INIT' ? 'initialState argument passed to createStore' : 'previous state received by the reducer';
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 365 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _immutable = __webpack_require__(351);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var _getStateName = __webpack_require__(364);
+
+	var _getStateName2 = _interopRequireDefault(_getStateName);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/* eslint-disable lodash3/prefer-lodash-method */
+
+	exports.default = function (state, reducers, action) {
+	    var reducerNames = Object.keys(reducers);
+
+	    if (!reducerNames.length) {
+	        return 'Store does not have a valid reducer. Make sure the argument passed to combineReducers is an object whose values are reducers.';
+	    }
+
+	    var stateName = (0, _getStateName2.default)(action);
+
+	    if (!_immutable2.default.Iterable.isIterable(state)) {
+	        return 'The ' + stateName + ' is of unexpected type. Expected argument to be an instance of Immutable.Iterable with the following properties: "' + reducerNames.join('", "') + '".';
+	    }
+
+	    var unexpectedStatePropertyNames = state.keySeq().toArray().filter(function (name) {
+	        return !reducers.hasOwnProperty(name);
+	    });
+
+	    if (unexpectedStatePropertyNames.length > 0) {
+	        return 'Unexpected ' + (unexpectedStatePropertyNames.length === 1 ? 'property' : 'properties') + ' "' + unexpectedStatePropertyNames.join('", "') + '" found in ' + stateName + '. Expected to find one of the known reducer property names instead: "' + reducerNames.join('", "') + '". Unexpected properties will be ignored.';
+	    }
+
+	    return null;
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 366 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function (nextState, reducerName, action) {
+	    // eslint-disable-next-line no-undefined
+	    if (nextState === undefined) {
+	        throw new Error('Reducer "' + reducerName + '" returned undefined when handling "' + action.type + '" action. To ignore an action, you must explicitly return the previous state.');
+	    }
+
+	    return null;
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 367 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	function createThunkMiddleware(extraArgument) {
+	  return function (_ref) {
+	    var dispatch = _ref.dispatch;
+	    var getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        if (typeof action === 'function') {
+	          return action(dispatch, getState, extraArgument);
+	        }
+
+	        return next(action);
+	      };
+	    };
+	  };
+	}
+
+	var thunk = createThunkMiddleware();
+	thunk.withExtraArgument = createThunkMiddleware;
+
+	exports['default'] = thunk;
+
+/***/ },
+/* 368 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _immutable = __webpack_require__(351);
+
+	var _reactRouterRedux = __webpack_require__(256);
+
+	var initialState = new _immutable.Map({
+	  locationBeforeTransitions: null
+	});
+
+	exports.default = function () {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
+
+	  if (action.type === _reactRouterRedux.LOCATION_CHANGE) {
+	    return state.merge({
+	      locationBeforeTransitions: action.payload
+	    });
+	  }
+	  return state;
+	};
 
 /***/ }
 /******/ ]);
