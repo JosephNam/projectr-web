@@ -17,7 +17,7 @@ class DashboardComponent extends React.Component {
         <div className="row">
           <div className="col s6">
             <UserInfo />
-            <a> Create New Project </a>
+            <a href="/app/createProject"> Create New Project </a>
           </div>
           <div className="col s6">
             <ProjectInfo />

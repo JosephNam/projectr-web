@@ -36195,7 +36195,7 @@
 	            _react2.default.createElement(_UserInfo2.default, null),
 	            _react2.default.createElement(
 	              'a',
-	              null,
+	              { href: '/app/createProject' },
 	              ' Create New Project '
 	            )
 	          ),
