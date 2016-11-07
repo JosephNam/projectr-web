@@ -18,6 +18,21 @@ class DashboardComponent extends React.Component {
   render() {
     return (
       <div className="container">
+        <nav>
+          <div className="nav-wrapper">
+            <a href="" className="brand-logo center">Projectr</a>
+            <ul className="left hide-on-med-and-down">
+              <li><a href="./match">Project Finder</a></li>
+              <li><a href="./dashboard">My Projects</a></li>
+              <li className="active"><a href="./dashboard">Dashboard</a></li>
+            </ul>
+            <ul className="right hide-on-med-and-down">
+              <li><a href="">Messages<span className="new badge">4</span></a></li>
+              <li><a href="./match">View My Profile</a></li>
+              <li><a href="./login">Sign Out</a></li>
+            </ul>
+          </div>
+        </nav>
         <div className="row">
           <div className="col s4">
             <div className="card-panel">
@@ -61,12 +76,6 @@ class DashboardComponent extends React.Component {
           </div>
           <div className="col s4">
             <ul>
-              <li>
-                <div className="right-align">
-                  <a className="waves-effect waves-light btn" href="/app/login">Sign Out</a>
-                  <a className="waves-effect waves-light btn" href="">View My Profile</a>
-                </div>
-              </li>
               <li>
                 <div className="right-align">
                   <h4> Notifications </h4>
