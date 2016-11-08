@@ -3,16 +3,29 @@ import Griddle from 'griddle-react'
 
 const Notifications = [
   {
-    Notification: 'Project Invitation: Sallys Project',
-    When: '2 hours ago'
+    ProjectName: 'Millennium Falcon',
+    Members: '8/10',
+    Completion: '87%'
   },
   {
-    Notification: 'Direct Message from Chris',
-    When: '3 hours ago'
+    ProjectName: 'Park Benches',
+    Members: '6/6',
+    Completion: '100%'
   },
   {
-    Notification: 'Direct Message from Kyle',
-    When: '2 days ago'
+    ProjectName: 'ALS Fundraiser',
+    Members: '50/75',
+    Completion: '50%'
+  },
+  {
+    ProjectName: 'Projectr',
+    Members: '4/4',
+    Completion: '60%'
+  },
+  {
+    ProjectName: 'Random project',
+    Members: '3/7',
+    Completion: '20%'
   }
 ]
 class UserNotifications extends React.Component {
