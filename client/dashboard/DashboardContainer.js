@@ -1,14 +1,10 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { Link } from 'react-router'
-import Griddle from 'griddle-react'
 
 import UserRating from './components/userRating'
 import ProfilePic from './components/ProfilePic'
-import ProfileInfo from './components/Profile'
 import UserProjects from './components/ActiveProjects'
 import UserNotifications from './components/Notifications'
-
-
 
 class DashboardComponent extends React.Component {
   constructor(props) {
