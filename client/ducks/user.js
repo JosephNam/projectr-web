@@ -1,5 +1,8 @@
 /* global fetch: true */
 import { Map } from 'immutable'
+import { push } from 'react-router-redux'
+
+require('isomorphic-fetch')
 
 const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
 const REQUEST_LOGIN = 'REQUEST_LOGIN'
@@ -15,7 +18,6 @@ export const requestLogin = () => (
 
 export const receiveLogin = (token, email, pw) => {
   console.log(token)
-  window.location = '/app/dashboard'
   return {
     type: RECEIVE_LOGIN,
     token,
@@ -41,8 +43,13 @@ export const tryLogin = (username, password) => (
     })
     .catch(error => console.log('network fetch failed', error))
     .then(res => res.json())
-    .then(json => dispatch(receiveLogin(json.token, username, password)))
-    .then(console.log('you are logged in'))
+    .then((json) => {
+      if (json.success) {
+        dispatch(receiveLogin(json.token, username, password))
+        dispatch(push('/app/dashboard'))
+        return
+      }
+    })
   }
 )
 
@@ -80,7 +87,7 @@ export const tryRegister = (username, password, firstName, lastName, email) => (
     })
     .then(res => res.json())
     .then(json => receiveRegister(username, json.password, firstName, lastName, email))
-    .then(console.log('congragulations you have registered'))
+    .then(dispatch(push('/app/login')))
     .catch(err => console.log(err))
   }
 )
