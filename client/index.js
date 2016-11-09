@@ -19,8 +19,11 @@ const Root = () => (
       <Route path="/app" component={App}>
         <IndexRoute component={LoginContainer} />
         <Route path="login" component={LoginContainer} />
+        <Route path="welcome" component={WelcomePage} />
+        <Route path="message" component={MessageContainer} />
         <Route path="signup" component={RegisterContainer} />
         <Route path="createProject" component={CreateProject} />
+        <Route path="userProjects" component={UserProjectsContainer} />
         <Route path="dashboard" component={DashboardContainer} />
         <Route path="match" component={ProjectMatchContainer} />
       </Route>

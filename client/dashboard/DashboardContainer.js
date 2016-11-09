@@ -18,6 +18,21 @@ class DashboardComponent extends React.Component {
   render() {
     return (
       <div className="container">
+        <nav>
+          <div className="nav-wrapper">
+            <a href="./welcome" className="brand-logo center">Projectr</a>
+            <ul className="left hide-on-med-and-down">
+              <li><a href="./match">Project Finder</a></li>
+              <li><a href="./userProjects">My Projects</a></li>
+              <li className="active"><a href="./dashboard">Dashboard</a></li>
+            </ul>
+            <ul className="right hide-on-med-and-down">
+              <li><a href="./message">Messages<span className="new badge">4</span></a></li>
+              <li><a href="./dashboard">View My Profile</a></li>
+              <li><a href="./login">Sign Out</a></li>
+            </ul>
+          </div>
+        </nav>
         <div className="row">
           <div className="col s4">
             <div className="card-panel">
@@ -32,7 +47,7 @@ class DashboardComponent extends React.Component {
                 <li>
                   <div className="card-action">
                     <div className="left-align">
-                      <Link className="btn" to="/app/dashboard"> Send Message </Link>
+                      <Link className="btn" to="/app/dashboard"> Start New Project </Link>
                     </div>
                   </div>
                 </li>
@@ -42,20 +57,10 @@ class DashboardComponent extends React.Component {
           <div className="col s4">
             <ul>
               <li>
-                <ProfileInfo />
-              </li>
-              <li>
                 <div className="center-align">
-                  <Link className="btn" to="/app/match"> Find New Projects </Link>
+                  <h4> Projects </h4>
                 </div>
-              </li>
-              <li>
-                {/* Any other way to add space? */}
-              </li>
-              <li>
-                <div className="center-align">
-                  <Link className="btn" to="/app/NewProject"> Start New Project </Link>
-                </div>
+                <UserProjects />
               </li>
             </ul>
           </div>
@@ -63,23 +68,11 @@ class DashboardComponent extends React.Component {
             <ul>
               <li>
                 <div className="right-align">
-                  <a className="waves-effect waves-light btn" href="/app/login">Sign Out</a>
-                  <a className="waves-effect waves-light btn" href="">View My Profile</a>
-                </div>
-              </li>
-              <li>
-                <div className="right-align">
                   <h4> Notifications </h4>
                 </div>
                 <UserNotifications />
               </li>
             </ul>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col s4">
-            <h4> Projects </h4>
-            <UserProjects />
           </div>
         </div>
       </div>
