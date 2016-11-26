@@ -32,24 +32,63 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <htmlForm className="col s12">
+      <div className="valign-wrapper" style={{width: '100%', height: '100%', position: 'absolute'}}>
+        <div className="valign" style={{width: '100%'}}>
+          <div className="container">
             <div className="row">
-              <div className="input-field col s6">
-                <input onChange={this.handleEmailChange} placeholder="email" id="email" type="text" className="validate" />
-              </div>
-              <div className="input-field col s6">
-                <input onChange={this.handlePwChange} placeholder="password" id="password" type="password" className="validate" />
+              <div className="col s12 m6 offset-m3">
+                <div>
+                  <div className="card-content">
+                    <htmlForm>
+                      <div className="row">
+                        <div className="input-field col s12">
+                          <input onChange={this.handleEmailChange} placeholder="Email" id="email" type="email" className="center input-primary" />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="input-field col s12">
+                          <input onChange={this.handlePwChange} placeholder="Password" id="password" type="password" className="center input-primary" />
+                        </div>
+                      </div>
+                    </htmlForm>
+                  </div>
+                  <div>
+                      <div className="center">
+                          <button className="btn teal" onClick={this.handleLoginSubmit}>Login</button>
+                      </div>
+                      <br/>
+                      <div className="center">
+                         <p>
+                            Don't have a Projectr account?
+                            <a href="/app/signup"> Register here. </a>    
+                         </p>
+                      </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </htmlForm>
-        </div>
-        <div className="row">
-          <button className="btn" onClick={this.handleLoginSubmit}>Login</button>
-          <a className="btn" href="/app/signup">Sign Up</a>
+          </div>
         </div>
       </div>
+      
+      // <div className="container valign-wrapper">
+      //   <div className='valign'>
+      //       <div className="row center">
+      //         <htmlForm className="col s12">
+      //           <div className="input-field">
+      //               <input onChange={this.handleEmailChange} placeholder="Email" id="email" type="text" className="validate" />
+      //             </div>
+      //             <div className="input-field">
+      //               <input onChange={this.handlePwChange} placeholder="Password" id="password" type="password" className="validate" />
+      //             </div>
+      //         </htmlForm>
+      //       </div>
+      //     <div className="row center">
+      //       <a className="btn" href="/app/signup">Sign Up</a>
+      //       <button className="btn" onClick={this.handleLoginSubmit}>Login</button>
+      //     </div>
+      //   </div>
+      // </div>
     )
   }
 }

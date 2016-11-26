@@ -31,11 +31,6 @@ div + div + div + div {
   margin-bottom:0px;
 }
 
-
-
-
-
-
 .griddle-container{
   border:1px solid #800;
   color:#800;
@@ -123,4 +118,29 @@ div + div + div + div {
 
 .griddle .griddle-next{
   text-align:right;
+}
+
+.btn {
+  box-shadow: none;
+  margin: 5px;
+}
+
+.btn:hover, .btn:focus {
+  box-shadow: none;
+  filter: brightness(120%);
+}
+
+.center {
+  text-align: center;
+}
+
+.background-main {
+  background-color: #E0E0E0;
+  /*background-color: #F7F6F6;*/
+}
+
+input.input-primary {
+  border: none;
+  background: white;
+  /*box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
 }
