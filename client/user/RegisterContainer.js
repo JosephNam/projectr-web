@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { tryRegister } from '../ducks/user'
+import {Link} from 'react-router';
 
 const propTypes = {
   register: PropTypes.function
@@ -44,6 +45,9 @@ class RegisterPage extends React.Component {
               <div className="col s12 m6 offset-m3">
                 <div>
                   <div className="card-content">
+                    <div className="row center">
+                      <p> Create a Projectr account. :) </p>
+                    </div>
                     <htmlForm className="col s12">
                       <div className="row">
                         <div className="input-field col s12">
@@ -52,14 +56,14 @@ class RegisterPage extends React.Component {
                         <div className="input-field col s12">
                           <input onChange={this.handleInputChange} placeholder="Password" id="password" type="password" className="validate input-primary center" />
                         </div>
-                        <div className="input-field col s12">
+                        <div className="input-field col s6">
                           <input onChange={this.handleInputChange} placeholder="First Name" id="firstName" type="text" className="validate input-primary center" />
                         </div>
-                        <div className="input-field col s12">
+                        <div className="input-field col s6">
                           <input onChange={this.handleInputChange} placeholder="Last Name" id="lastName" type="text" className="validate input-primary center" />
                         </div>
                         <div className="input-field col s12">
-                          <input onChange={this.handleInputChange} placeholder="Email" id="email" type="text" className="validate input-primary center" />
+                          <input onChange={this.handleInputChange} placeholder="Email" id="email" type="email" className="validate input-primary center" />
                         </div>
                       </div>
                     </htmlForm>
@@ -68,7 +72,7 @@ class RegisterPage extends React.Component {
                     <button className="btn" onClick={this.handleRegisterSubmit}>Confirm</button>
                   </div>
                   <div className="row center">
-                    <a href='/app/login'> Go back. </a>
+                    <Link to='/app/login'> Go back to login. </Link>
                   </div>
                 </div>
               </div>
@@ -76,36 +80,6 @@ class RegisterPage extends React.Component {
           </div>
         </div>
       </div>
-      // <div className="container">
-      //   <div className="row">
-      //     <htmlForm className="col s12">
-      //       <div className="row">
-      //         <div className="input-field col s6">
-      //           <input onChange={this.handleInputChange} placeholder="username" id="username" type="text" className="validate input-primary center" />
-      //         </div>
-      //         <div className="input-field col s6">
-      //           <input onChange={this.handleInputChange} placeholder="password" id="password" type="password" className="validate input-primary center" />
-      //         </div>
-      //       </div>
-      //       <div className="row">
-      //         <div className="input-field col s6">
-      //           <input onChange={this.handleInputChange} placeholder="firstName" id="firstName" type="text" className="validate input-primary center" />
-      //         </div>
-      //         <div className="input-field col s6">
-      //           <input onChange={this.handleInputChange} placeholder="lastName" id="lastName" type="text" className="validate input-primary center" />
-      //         </div>
-      //       </div>
-      //       <div className="row">
-      //         <div className="input-field col s6">
-      //           <input onChange={this.handleInputChange} placeholder="email" id="email" type="text" className="validate input-primary center" />
-      //         </div>
-      //       </div>
-      //     </htmlForm>
-      //   </div>
-      //   <div className="row">
-      //     <button className="btn" onClick={this.handleRegisterSubmit}>Register</button>
-      //   </div>
-      // </div>
     )
   }
 }

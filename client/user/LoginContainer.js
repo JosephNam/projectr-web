@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { tryLogin } from '../ducks/user'
+import {Link} from 'react-router';
 
 const propTypes = {
   login: PropTypes.function
@@ -39,6 +40,11 @@ class LoginPage extends React.Component {
               <div className="col s12 m6 offset-m3">
                 <div>
                   <div className="card-content">
+                    <div className="row center">
+                      <p>
+                        Sign into your Projectr account :)
+                      </p>
+                    </div>
                     <htmlForm>
                       <div className="row">
                         <div className="input-field col s12">
@@ -60,7 +66,7 @@ class LoginPage extends React.Component {
                       <div className="center">
                          <p>
                             Don't have a Projectr account?
-                            <a href="/app/signup"> Register here. </a>    
+                            <Link to="/app/signup"> Register here. </Link>    
                          </p>
                       </div>
                   </div>
