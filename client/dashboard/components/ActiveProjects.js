@@ -36,11 +36,6 @@ const ActiveProjects = [
     ProjectName: 'Random project C',
     Members: '3/7',
     Completion: '20%'
-  },
-  {
-    ProjectName: 'Random project D',
-    Members: '3/7',
-    Completion: '20%'
   }
 ]
 
