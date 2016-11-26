@@ -35,13 +35,34 @@ class UserNotifications extends React.Component {
   }
   render() {
     return (
-      <Griddle
-        results={Notifications}
-        showSettings={1}
-        showFilter={1}
-        showTableHeading={0}
-      />
+      <ul className="collection">
+        {Notifications.map((notif, i) => {
+          return <Notification {...notif} key={i}></Notification>
+        })}
+      </ul>
+      // {
+      //   // <Griddle
+      // //   results={Notifications}
+      // //   showSettings={1}
+      // //   showFilter={1}
+      // //   showTableHeading={0}
+      // // />
+      // }
+      
     )
   }
 }
+
+class Notification extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {};
+  }
+  
+  render() {
+    return <a href='#' className="collection-item notification">{this.props.ProjectName}</a>  
+  }
+}
+
+
 export default UserNotifications

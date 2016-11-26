@@ -152,6 +152,14 @@ input.input-primary {
   /*box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
 }
 
+div.dashboard-container {
+  width: 90%;
+}
+
+nav {
+  box-shadow: none;
+}
+
 div.project-card {
   transition: .1s border;
 }
@@ -162,4 +170,15 @@ div.project-card:hover {
   box-shadow: inset 0 -5px 0 0 #4DB6AC;
   transform: scale(1.05, 1.05);
   cursor: pointer;
+}
+
+a.notification, li.notification {
+  -webkit-transition: .1s border;
+  -moz-transition: .1s border;
+  transition: .1s border;
+}
+
+a.notification:hover, li.notification:hover {
+  border-left: 8px solid #4DB6AC;
+  background-color: transparent !important;
 }

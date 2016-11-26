@@ -13,19 +13,18 @@ class DashboardComponent extends React.Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container dashboard-container">
         <nav>
-          <div className="nav-wrapper">
+          <div className="nav-wrapper teal">
             <a href='#' className="brand-logo center">Projectr</a>
             <ul className="left hide-on-med-and-down">
-              <li><a href="./match">Project Finder</a></li>
-              <li><a href="./userProjects">My Projects</a></li>
+              <li><Link to="/app/match">Project Finder</Link></li>
               <li className="active"><a href="./dashboard">Dashboard</a></li>
             </ul>
             <ul className="right hide-on-med-and-down">
-              <li><a href="./message">Messages<span className="new badge">4</span></a></li>
-              <li><a href="./dashboard">View My Profile</a></li>
-              <li><a href="./login">Sign Out</a></li>
+              <li><a href="/message">Messages<span className="new badge">4</span></a></li>
+              <li><a href="/dashboard">View My Profile</a></li>
+              <li><a href="/login">Sign Out</a></li>
             </ul>
           </div>
         </nav>

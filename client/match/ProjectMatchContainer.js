@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import {Link} from 'react-router';
 import Griddle from 'griddle-react'
 
 const propTypes = {
@@ -85,8 +86,7 @@ export default class ProjectMatchContainer extends React.Component {
             <a href="./welcome" className="brand-logo center">Projectr</a>
             <ul className="left hide-on-med-and-down">
               <li className="active"><a href="./match">Project Finder</a></li>
-              <li><a href="./userProjects">My Projects</a></li>
-              <li><a href="./dashboard">Dashboard</a></li>
+              <li><Link to="/app/dashboard">Dashboard</Link></li>
             </ul>
             <ul className="right hide-on-med-and-down">
               <li><a href="./message">Messages<span className="new badge">4</span></a></li>
