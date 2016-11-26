@@ -26,6 +26,21 @@ const ActiveProjects = [
     ProjectName: 'Random project',
     Members: '3/7',
     Completion: '20%'
+  },
+  {
+    ProjectName: 'Random project B',
+    Members: '3/7',
+    Completion: '20%'
+  },
+  {
+    ProjectName: 'Random project C',
+    Members: '3/7',
+    Completion: '20%'
+  },
+  {
+    ProjectName: 'Random project D',
+    Members: '3/7',
+    Completion: '20%'
   }
 ]
 
@@ -50,10 +65,15 @@ class ProjectCard extends React.Component {
       super(props)
       this.state = {};
     }
+    
+    onClick() {
+        console.log(this.props.ProjectName)
+    }
+    
     render() {
         return (
             <div className="col s6">
-              <div className="card project-card">
+              <div className="card project-card" onClick={this.onClick.bind(this)}>
                 <div className="card-content">
                   <span className="card-title inline">
                       <a>{this.props.ProjectName}</a>

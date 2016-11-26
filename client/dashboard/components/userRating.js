@@ -13,7 +13,7 @@ const UserRating = () => (
     size={28}
     color2={'#ffd700'}
   />
-)
+) 
 
 
 export default UserRating

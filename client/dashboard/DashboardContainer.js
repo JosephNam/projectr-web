@@ -29,9 +29,9 @@ class DashboardComponent extends React.Component {
             </ul>
           </div>
         </nav>
-        <div className="row">
-          <div className="col s3">
-            <div className="card-panel">
+        <div className="row" style={{marginTop: '20px'}}>
+          <div className="col s2 user-panel">
+            <div className="card-panel indigo lighten-5 center">
               <ul>
                 <li>
                   <h4> User Name </h4>
@@ -40,40 +40,27 @@ class DashboardComponent extends React.Component {
                 <li>
                   <UserRating />
                 </li>
+              </ul>
+            </div>
+            <div className="row">
+              <div className="col s12">
+                <Link className="btn" to="/app/dashboard" style={{width: '100%'}}> New </Link>
+              </div>
+            </div>
+          </div>
+          <div className="col s7">
+            <UserProjects />
+          </div>
+          <div className="col s3">
+             <div className="card-panel center">
+              <ul>
                 <li>
-                  <div className="card-action">
-                    <div className="left-align">
-                      <Link className="btn" to="/app/dashboard"> Start New Project </Link>
-                    </div>
-                  </div>
+                  <h4>Notifications</h4>
                 </li>
+                <UserNotifications />
               </ul>
             </div>
           </div>
-          <div className="col s9">
-            <ul>
-              <li>
-                <div className="center-align">
-                  <h4> Projects </h4>
-                </div>
-                <UserProjects />
-              </li>
-            </ul>
-          </div>
-          {
-            /*
-             // <div className="col s4">
-          //   <ul>
-          //     <li>
-          //       <div className="right-align">
-          //         <h4> Notifications </h4>
-          //       </div>
-          //       <UserNotifications />
-          //     </li>
-          //   </ul>
-          // </div>
-            */
-          }
          
         </div>
       </div>

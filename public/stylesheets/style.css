@@ -121,14 +121,14 @@ div + div + div + div {
 
 .btn {
   box-shadow: none;
-  margin: 5px;
+  /*margin: 5px;*/
 }
 
 .inline {
   display: inline;
 }
 
-div.card {
+div.card, div.card-panel {
     box-shadow: none;
 }
 
@@ -160,6 +160,6 @@ div.project-card:hover {
   /*border-bottom: 5px solid #4DB6AC;*/
   /*box-shadow: 0 4px 0px #4DB6AC;*/
   box-shadow: inset 0 -5px 0 0 #4DB6AC;
-  transform: scale(1.01, 1.01);
+  transform: scale(1.05, 1.05);
   cursor: pointer;
 }
