@@ -16,7 +16,7 @@ class DashboardComponent extends React.Component {
       <div className="container">
         <nav>
           <div className="nav-wrapper">
-            <a href="./welcome" className="brand-logo center">Projectr</a>
+            <a href='#' className="brand-logo center">Projectr</a>
             <ul className="left hide-on-med-and-down">
               <li><a href="./match">Project Finder</a></li>
               <li><a href="./userProjects">My Projects</a></li>
@@ -30,7 +30,7 @@ class DashboardComponent extends React.Component {
           </div>
         </nav>
         <div className="row">
-          <div className="col s4">
+          <div className="col s3">
             <div className="card-panel">
               <ul>
                 <li>
@@ -50,7 +50,7 @@ class DashboardComponent extends React.Component {
               </ul>
             </div>
           </div>
-          <div className="col s4">
+          <div className="col s9">
             <ul>
               <li>
                 <div className="center-align">
@@ -60,16 +60,21 @@ class DashboardComponent extends React.Component {
               </li>
             </ul>
           </div>
-          <div className="col s4">
-            <ul>
-              <li>
-                <div className="right-align">
-                  <h4> Notifications </h4>
-                </div>
-                <UserNotifications />
-              </li>
-            </ul>
-          </div>
+          {
+            /*
+             // <div className="col s4">
+          //   <ul>
+          //     <li>
+          //       <div className="right-align">
+          //         <h4> Notifications </h4>
+          //       </div>
+          //       <UserNotifications />
+          //     </li>
+          //   </ul>
+          // </div>
+            */
+          }
+         
         </div>
       </div>
     )

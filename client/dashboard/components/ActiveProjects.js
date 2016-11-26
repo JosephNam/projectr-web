@@ -28,6 +28,7 @@ const ActiveProjects = [
     Completion: '20%'
   }
 ]
+
 class UserProjects extends React.Component {
   constructor(props) {
     super(props)
@@ -35,14 +36,37 @@ class UserProjects extends React.Component {
   }
   render() {
     return (
-      <Griddle
-        results={ActiveProjects}
-        showSettings={1}
-        showFilter={1}
-      />
+      <div>
+        {ActiveProjects.map((proj, i) => {
+            return <ProjectCard {...proj} key={i}> </ProjectCard>
+        })}
+      </div>
     )
   }
 }
+
+class ProjectCard extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {};
+    }
+    render() {
+        return (
+            <div className="col s6">
+              <div className="card project-card">
+                <div className="card-content">
+                  <span className="card-title inline">
+                      <a>{this.props.ProjectName}</a>
+                  </span>
+                  <p>Placeholder description</p>
+                </div>
+              </div>
+            </div>
+        )
+    }
+}
+
+
 export default UserProjects
 
 

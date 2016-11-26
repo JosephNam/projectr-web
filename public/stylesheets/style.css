@@ -1,7 +1,6 @@
 body {
   padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("http://protiumdesign.com/wp-content/uploads/2014/07/Network-Connection-1024.jpg#.WCFMu-UahsU.link");
   background-size: 100%
 }
 
@@ -22,14 +21,14 @@ h4 {
 nav {
   background-color: #ff9933
 }
-div + div + div {
+/*div + div + div {
   margin-top:20px;
   margin-bottom:0px;
 }
 div + div + div + div {
   margin-top:40px;
   margin-bottom:0px;
-}
+}*/
 
 .griddle-container{
   border:1px solid #800;
@@ -125,6 +124,14 @@ div + div + div + div {
   margin: 5px;
 }
 
+.inline {
+  display: inline;
+}
+
+div.card {
+    box-shadow: none;
+}
+
 .btn:hover, .btn:focus {
   box-shadow: none;
   filter: brightness(120%);
@@ -143,4 +150,16 @@ input.input-primary {
   border: none;
   background: white;
   /*box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
+}
+
+div.project-card {
+  transition: .1s border;
+}
+
+div.project-card:hover {
+  /*border-bottom: 5px solid #4DB6AC;*/
+  /*box-shadow: 0 4px 0px #4DB6AC;*/
+  box-shadow: inset 0 -5px 0 0 #4DB6AC;
+  transform: scale(1.01, 1.01);
+  cursor: pointer;
 }
