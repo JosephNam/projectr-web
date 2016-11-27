@@ -82,7 +82,7 @@ export default class ProjectMatchContainer extends React.Component {
     return (
       <div className="container">
         <nav>
-          <div className="nav-wrapper">
+          <div className="nav-wrapper teal">
             <a href="./welcome" className="brand-logo center">Projectr</a>
             <ul className="left hide-on-med-and-down">
               <li className="active"><a href="./match">Project Finder</a></li>
@@ -95,9 +95,8 @@ export default class ProjectMatchContainer extends React.Component {
             </ul>
           </div>
         </nav>
-        <div className="center align">
-          <a className="btn" href="/app/match"> Find More Matches </a>
-        </div>
+        
+        
         <div className="row">
           <Griddle
             results={projectsMeta}

@@ -160,8 +160,15 @@ nav {
   box-shadow: none;
 }
 
+@keyframes sizer {
+  from {transform: scale(1, 1)}
+  to {transform: scale(1.05, 1.05)}
+}
+
 div.project-card {
-  transition: .1s border;
+  transition: .5s all;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
 }
 
 div.project-card:hover {
@@ -170,6 +177,7 @@ div.project-card:hover {
   box-shadow: inset 0 -5px 0 0 #4DB6AC;
   transform: scale(1.05, 1.05);
   cursor: pointer;
+  /*animation: sizer .6s infinite alternate;*/
 }
 
 a.notification, li.notification {
