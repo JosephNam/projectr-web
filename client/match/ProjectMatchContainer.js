@@ -5,10 +5,7 @@ import Griddle from 'griddle-react'
 const propTypes = {
   matches: PropTypes.array
 }
-// function linked() {
-//   const url = './projects/'
-//   return <a href={'./projects/'}>Click to Join</a>
-// }
+
 const columnMeta = [
   {
     columnName: 'Id',
@@ -71,13 +68,28 @@ const projectsMeta = [
   }
 ]
 
+const matches = [
+   {
+     name: 'Project 1',
+     tags: [
+       {
+         name: 'express.js'
+       },
+       {
+         name: 'node.js'
+       }
+     ]
+   }
+]
+
 export default class ProjectMatchContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      projectsMeta
+      matches
     }
   }
+  
   render() {
     return (
       <div className="container">
@@ -96,18 +108,67 @@ export default class ProjectMatchContainer extends React.Component {
           </div>
         </nav>
         
+        <br />
         
-        <div className="row">
-          <Griddle
-            results={projectsMeta}
-            columnMetadata={columnMeta}
-            showSettings={1}
-            showFilter={1}
-          />
+        <div className='row'>
+            {
+              this.state.matches.map((m, i) => {
+                return <ProjectMatchCard {...m} key={i}> </ProjectMatchCard>
+              })
+            }
         </div>
       </div>
     )
   }
 }
+
+export class ProjectMatchCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  
+  render() {
+    return (
+      <div className="col s6">
+       <div className="card">
+          <div className="card-content">
+            <span className="card-title inline">
+                <a>{this.props.name}</a>
+            </span>
+            <div>
+              <br/>
+              
+            </div>
+          </div>
+          <div className='card-action'>
+            <div className="row">
+                {this.props.tags.map((t, i) => <Tag {...t} key={i}></Tag>)}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+  
+}
+
+export class Tag extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }  
+  
+  render() {
+    return (
+      <div className="col s2">
+        <div className='chip tag-chip' title={this.props.name}>
+            {this.props.name}
+        </div>
+      </div>
+    )
+  }
+}
+
 
 ProjectMatchContainer.propTypes = propTypes
