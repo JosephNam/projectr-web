@@ -75,7 +75,7 @@ class DashboardComponent extends React.Component {
               </div>
               <div className="row">
                 <div className="col s12">
-                  <Link className="btn" to="/app/dashboard" style={{ width: '100%' }}> New </Link>
+                  <Link className="btn" to="/app/createProject" style={{ width: '100%' }}> New </Link>
                 </div>
               </div>
             </div>
