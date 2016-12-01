@@ -119,17 +119,12 @@ div + div + div + div {
   text-align:right;
 }
 
-.btn {
-  /*box-shadow: none;*/
-  /*margin: 5px;*/
+p.description {
+  white-space: pre-wrap;
 }
 
 .inline {
   display: inline;
-}
-
-div.card, div.card-panel {
-    /*box-shadow: none;*/
 }
 
 .btn:hover, .btn:focus {

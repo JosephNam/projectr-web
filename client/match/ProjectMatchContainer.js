@@ -64,24 +64,54 @@ export class ProjectMatchCard extends React.Component {
     this.state = {
       requestMessage: '',
       sentRequest: false,
-    };
+    }
   }
   
   onInputChange(e) {
-      this.requestMessage = e.target.value.trim();
+      this.state.requestMessage = e.target.value.trim()
   }
   
+  onClick(e) {
+    if (this.state.requestMessage.length > 0) {
+      this.sendJoinRequest()
+        .then(res => this.setState({
+          sentRequest: true
+        }))
+        .catch(err => console.log(err))
+    }
+  }
+
+  sendJoinRequest() {
+    return new Promise((resolve, reject) => {
+        const headers = {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Projectr-Token': sessionStorage.getItem('projectrToken')
+        }
+        const url = 'http://localhost:1337/api/projects/' + this.props.project_id + '/requests'
+        const body = JSON.stringify({
+          request_message: this.state.requestMessage
+        })
+        fetch(url, {headers, method: 'POST', body})
+          .then(response => response.json())
+          .then(res => resolve())
+          .catch(err => reject(err))
+    })
+  }
+
   render() {
     return (
       <div className="col s6">
        <div className="card">
           <div className="card-content">
-            <span className="card-title inline">
+            <span className="card-title">
                 <a>{this.props.project_name}</a>
             </span>
+            <br />
+            <label>Owner: {this.props.owner_username + ` (${this.props.owner_first_name} ${this.props.owner_last_name})`}</label>
             <div>
               <br/>
-              <p>{this.props.project_description}</p>
+              <p className='description'>{this.props.project_description}</p>
             </div>
             <br />
             <div className="row">
@@ -91,12 +121,12 @@ export class ProjectMatchCard extends React.Component {
           <div className='card-action'>
             
             <div className="row">
-                <div className='col 12'>
+                <div className='col s12'>
                   <div className="row">
                     <div className="input-field col s12">
-                      <textarea id={'p' + this.props.project_id} className="materialize-textarea input-primary" onChange={this.onInputChange.bind(this)}></textarea>
-                      <label htmlFor={'p' + this.props.project_id}>{`Add a message for ${this.props.owner_username} in your request to join.`}</label>
-                      <button type='button' className='btn' disabled={this.state.sentRequest}>Send!</button>
+                      <textarea id={'p' + this.props.project_id} disabled={this.state.sentRequest} className="materialize-textarea input-primary" onChange={this.onInputChange.bind(this)}></textarea>
+                      <label htmlFor={'p' + this.props.project_id}>{`(Required) Add a message for ${this.props.owner_username} in your request to join.`}</label>
+                      <button type='button' className='btn' disabled={this.state.sentRequest} onClick={this.onClick.bind(this)}>{this.state.sentRequest ? 'Sent!' : 'Send'}</button>
                     </div>
                   </div>  
                 </div>
