@@ -48,7 +48,7 @@ class LoginPage extends React.Component {
                     <htmlForm>
                       <div className="row">
                         <div className="input-field col s12">
-                          <input onChange={this.handleEmailChange} placeholder="Email" id="email" type="email" className="center input-primary" />
+                          <input onChange={this.handleEmailChange} placeholder="Username" id="email" type="text" className="center input-primary" />
                         </div>
                       </div>
                       <div className="row">

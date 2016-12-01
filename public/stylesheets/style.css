@@ -146,10 +146,14 @@ div.card, div.card-panel {
   /*background-color: #F7F6F6;*/
 }
 
-input.input-primary {
+.input-primary {
   border: none;
   background: white;
   /*box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
+}
+input.input-primary {
+   border: none;
+  background: white;
 }
 
 div.dashboard-container {
@@ -192,7 +196,7 @@ a.notification:hover, li.notification:hover {
 }
 
 .tag-chip {
-  border-radius: 2px 5px 5px 2px;
+  border-radius: 2px;
   text-overflow: ellipsis;
 }
 

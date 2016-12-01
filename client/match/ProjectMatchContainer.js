@@ -6,93 +6,31 @@ const propTypes = {
   matches: PropTypes.array
 }
 
-const columnMeta = [
-  {
-    columnName: 'Id',
-    order: 0,
-    locked: false,
-    visible: true
-  },
-  {
-    columnName: 'ProjectName',
-    order: 1
-  },
-  {
-    columnName: 'Members',
-    order: 2
-  },
-  {
-    columnName: 'Completion',
-    order: 3
-  },
-  {
-    columnName: 'Joinable',
-    order: 4
-  }
-]
-const projectsMeta = [
-  {
-    Id: 0,
-    ProjectName: 'Millennium Falcon',
-    Members: '10/10',
-    Completion: '87%',
-    Joinable: 'No'
-  },
-  {
-    Id: 1,
-    ProjectName: 'Park Benches',
-    Members: '6/6',
-    Completion: '100%',
-    Joinable: 'No'
-  },
-  {
-    Id: 2,
-    ProjectName: 'ALS Fundraiser',
-    Members: '50/75',
-    Completion: '50%',
-    Joinable: <a href="./projects/2">Yes</a>
-  },
-  {
-    Id: 3,
-    ProjectName: 'Projectr',
-    Members: '4/4',
-    Completion: '60%',
-    Joinable: 'No'
-  },
-  {
-    Id: 4,
-    ProjectName: 'Random project',
-    Members: '3/7',
-    Completion: '20%',
-    Joinable: <a href="./projects/4">Yes</a>
-  }
-]
-
-const matches = [
-   {
-     name: 'Project 1',
-     tags: [
-       {
-         name: 'express.js'
-       },
-       {
-         name: 'node.js'
-       }
-     ]
-   }
-]
-
 export default class ProjectMatchContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      matches
+      matches: [],
     }
+  }
+  
+  componentDidMount() {
+    const headers = new Headers()
+    headers.append('Projectr-Token', sessionStorage.getItem('projectrToken'))
+    fetch('http://localhost:1337/api/projectmatches', {headers})
+      .then(response => response.json())
+      .then(json => {
+          const matches = json.result.project_matches;
+          this.setState({
+              matches
+          })
+      })
+      .catch(err => console.log(err))
   }
   
   render() {
     return (
-      <div className="container">
+      <div className="dashboard-container container">
         <nav>
           <div className="nav-wrapper teal">
             <a href="./welcome" className="brand-logo center">Projectr</a>
@@ -101,15 +39,13 @@ export default class ProjectMatchContainer extends React.Component {
               <li><Link to="/app/dashboard">Dashboard</Link></li>
             </ul>
             <ul className="right hide-on-med-and-down">
-              <li><a href="./message">Messages<span className="new badge">4</span></a></li>
-              <li><a href="./dashboard">View My Profile</a></li>
               <li><a href="./login">Sign Out</a></li>
             </ul>
           </div>
         </nav>
         
         <br />
-        
+        <h3>Matches found : {this.state.matches.length}</h3>
         <div className='row'>
             {
               this.state.matches.map((m, i) => {
@@ -125,7 +61,14 @@ export default class ProjectMatchContainer extends React.Component {
 export class ProjectMatchCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      requestMessage: '',
+      sentRequest: false,
+    };
+  }
+  
+  onInputChange(e) {
+      this.requestMessage = e.target.value.trim();
   }
   
   render() {
@@ -134,16 +77,29 @@ export class ProjectMatchCard extends React.Component {
        <div className="card">
           <div className="card-content">
             <span className="card-title inline">
-                <a>{this.props.name}</a>
+                <a>{this.props.project_name}</a>
             </span>
             <div>
               <br/>
-              
+              <p>{this.props.project_description}</p>
+            </div>
+            <br />
+            <div className="row">
+                {this.props.matching_tags.map((t, i) => <Tag {...t} key={i}></Tag>)}
             </div>
           </div>
           <div className='card-action'>
+            
             <div className="row">
-                {this.props.tags.map((t, i) => <Tag {...t} key={i}></Tag>)}
+                <div className='col 12'>
+                  <div className="row">
+                    <div className="input-field col s12">
+                      <textarea id={'p' + this.props.project_id} className="materialize-textarea input-primary" onChange={this.onInputChange.bind(this)}></textarea>
+                      <label htmlFor={'p' + this.props.project_id}>{`Add a message for ${this.props.owner_username} in your request to join.`}</label>
+                      <button type='button' className='btn' disabled={this.state.sentRequest}>Send!</button>
+                    </div>
+                  </div>  
+                </div>
             </div>
           </div>
         </div>
@@ -161,9 +117,9 @@ export class Tag extends React.Component {
   
   render() {
     return (
-      <div className="col s2">
-        <div className='chip tag-chip' title={this.props.name}>
-            {this.props.name}
+      <div className="col s2" style={{marginRight: '20px'}}>
+        <div className='chip tag-chip' title={this.props.tag_name}>
+            {this.props.tag_name}
         </div>
       </div>
     )
