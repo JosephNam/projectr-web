@@ -29,10 +29,10 @@ export class UserTagsContainer extends React.Component {
                 <div className='card'>
                     <div className='card-content'>
                         <span className="card-title">
-                            <a>Tags ({this.state.tags.length})</a>
+                            <p>My Tags ({this.state.tags.length})</p>
                         </span>
                         <br />
-                        <div className='row'>
+                        <div className='row card-final'>
                             <div className='col s12 center'>
                                 {this.state.tags.map((t, i) => {
                                     return <Tag {...t} key={i}> </Tag>
@@ -83,6 +83,36 @@ class TagSearchComponent extends React.Component {
             })
     }
 
+    onSubmitNewTag() {
+        const {query} = this.state;
+        if (query.length >= 2) {
+            fetch('http://localhost:1337/api/tags', {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Projectr-Token': sessionStorage.getItem('projectrToken')
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    tag_name: query
+                })
+            })
+            .then(response => response.json())
+            .then(json => {
+                if (json.success) {
+                    const name = json.result.tag_name
+                    Materialize.toast(`Added tag: ${name} to Projectr system.`, 2000)
+                } else {
+                    Materialize.toast('Could not add new tag (duplicate may exist).', 2000)
+                }
+            })
+            .catch(err => {
+                Materialize.toast('Could not add new tag (something went wrong).', 2000)
+            })
+            
+        }
+    }
+
     render() {
         const projectId = sessionStorage.getItem('currentProject')
         return (
@@ -95,7 +125,7 @@ class TagSearchComponent extends React.Component {
                             })}
                         </div>
                         <input type='text' className='input-primary inline shadow' style={{paddingLeft: '10px'}} placeholder='Search for tags' onKeyUp={this.onChange.bind(this)}/>
-                        
+                        <a title='Add a new tag if you could not find a match' className="secondary-content add-new-tag" onClick={this.onSubmitNewTag.bind(this)}><i className="material-icons">done</i></a>
                     </ul>
                 </div>
                 
