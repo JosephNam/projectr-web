@@ -8,6 +8,8 @@ import UserProjects from './components/ActiveProjects'
 import UserNotifications from './components/Notifications'
 import ProjectrNav from './components/ProjectrNav'
 import ProjectView from './components/ProjectView'
+import {TagsContainer} from './components/UserTags'
+
 import { fetchInfo } from '../ducks/user'
 
 
@@ -29,6 +31,7 @@ class DashboardComponent extends React.Component {
   }
 
   componentDidMount() {
+    sessionStorage.removeItem('currentProject')
     setTimeout(() => {
       if (this.props.username === undefined) {
         console.log('hello')
@@ -41,12 +44,14 @@ class DashboardComponent extends React.Component {
     this.setState({
       selectedProject: project
     })
+    sessionStorage.setItem('currentProject', project.project_id)
   }
 
   back() {
     this.setState({
       selectedProject: undefined
     })
+    sessionStorage.removeItem('currentProject')
   }
 
   render() {
@@ -54,8 +59,9 @@ class DashboardComponent extends React.Component {
     if (this.state.selectedProject === undefined) {
       projectView = <UserProjects projects={this.props.projects} select={this.selectProject} />
     } else {
-      projectView = <ProjectView project={this.state.selectedProject} back={this.back} />
+      projectView = <ProjectView {...this.state.selectedProject} back={this.back} />
     }
+    const username = sessionStorage.getItem('user')
     return (
       <div className="container dashboard-container">
         <ProjectrNav />
@@ -78,23 +84,17 @@ class DashboardComponent extends React.Component {
                   <Link className="btn" to="/app/createProject" style={{ width: '100%' }}> New </Link>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="col s8 responsive-margin">
-            {projectView}
-          </div>
-          <div className="col s2">
-            <div className="responsive-fixed">
-              <div className="card-panel center">
-                <ul>
-                  <li>
-                    <h4>Notices</h4>
-                  </li>
-                  <UserNotifications />
-                </ul>
+              <div className='row'>
+                <div className='col s12'>
+                  <TagsContainer title={'My Tags'} url={'http://localhost:1337/api/users/' + username + '/tags'}></TagsContainer>
+                </div>
               </div>
             </div>
           </div>
+          <div className="col s10 responsive-margin">
+            {projectView}
+          </div>
+          
         </div>
       </div>
     )

@@ -11,8 +11,6 @@ const ProjectrNav = () => (
         <li className="active"><a href="./dashboard">Dashboard</a></li>
       </ul>
       <ul className="right hide-on-med-and-down">
-        <li><a href="/app/message">Messages<span className="new badge">4</span></a></li>
-        <li><a href="/app/dashboard">View My Profile</a></li>
         <li><Link to="/app/login">Sign Out</Link></li>
       </ul>
     </div>

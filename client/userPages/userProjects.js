@@ -46,8 +46,6 @@ class UserProjectsContainer extends React.Component {
               <li><a href="./dashboard">Dashboard</a></li>
             </ul>
             <ul className="right hide-on-med-and-down">
-              <li><a href="./message">Messages<span className="new badge">4</span></a></li>
-              <li><a href="./dashboard">View My Profile</a></li>
               <li><a href="./login">Sign Out</a></li>
             </ul>
           </div>

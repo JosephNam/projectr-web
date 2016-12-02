@@ -119,22 +119,59 @@ div + div + div + div {
   text-align:right;
 }
 
-.btn {
-  box-shadow: none;
-  /*margin: 5px;*/
+p.description {
+  white-space: pre-wrap;
 }
 
 .inline {
   display: inline;
 }
 
-div.card, div.card-panel {
-    box-shadow: none;
+.btn {
+  box-shadow: none;
 }
 
 .btn:hover, .btn:focus {
   box-shadow: none;
-  filter: brightness(120%);
+  filter: brightness(110%);
+}
+
+p.separate-bottom {
+  padding-bottom: 10px;
+}
+
+p.separate-top {
+  padding-top: 10px;
+  border-top: 1px solid;
+}
+
+i.handle {
+  padding: 10px;
+  transition: .3s all;
+}
+
+i.handle:hover {
+  cursor: pointer;
+  background: #e0e0e0;
+}
+
+i.handle:first-child {
+  margin-right: 20px;
+}
+
+[data-letters]:before {
+  content:attr(data-letters);
+  display:inline-block;
+  font-size:1em;
+  width:2.5em;
+  height:2.5em;
+  line-height:2.5em;
+  text-align:center;
+  border-radius:50%;
+  /*background:plum;*/
+  vertical-align:middle;
+  margin-right:1em;
+  color:white;
 }
 
 .center {
@@ -146,10 +183,13 @@ div.card, div.card-panel {
   /*background-color: #F7F6F6;*/
 }
 
-input.input-primary {
+.input-primary {
   border: none;
   background: white;
-  /*box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
+}
+input.input-primary {
+   border: none;
+  background: white;
 }
 
 div.dashboard-container {
@@ -158,6 +198,28 @@ div.dashboard-container {
 
 nav {
   box-shadow: none;
+}
+
+.reject {
+  color: red;  
+}
+.accept {
+  color: green;
+}
+
+.add-new-tag {
+  position: fixed;
+  bottom: 18px;
+  float: right;
+  margin-left: 300px;
+  z-index: 30;
+  padding: 7px;
+  padding-bottom: 5px;
+  transition: .3s background;
+}
+.add-new-tag:hover {
+  cursor: pointer;
+  background: #e0e0e0;
 }
 
 @keyframes sizer {
@@ -172,12 +234,8 @@ div.project-card {
 }
 
 div.project-card:hover {
-  /*border-bottom: 5px solid #4DB6AC;*/
-  /*box-shadow: 0 4px 0px #4DB6AC;*/
   box-shadow: inset 0 -5px 0 0 #4DB6AC;
-  transform: scale(1.05, 1.05);
   cursor: pointer;
-  /*animation: sizer .6s infinite alternate;*/
 }
 
 a.notification, li.notification {
@@ -191,8 +249,139 @@ a.notification:hover, li.notification:hover {
   background-color: transparent !important;
 }
 
+.search-box > ul {
+  border: none;
+}
+
+.search-result {
+  background: #78909c  !important;
+  border: none !important;
+  color: white !important;
+}
+
+.search-result:hover {
+  filter: brightness(125%);
+  cursor: pointer;
+}
+
+.search-result > .secondary-content {
+  color: #1de9b6;
+  transition: .4s all;
+  margin-left: 20px;
+}
+.search-result > .secondary-content[disabled] {
+  transition: .4s all;
+}
+.search-result > .secondary-content:hover {
+  transform: scale(1.55, 1.55)
+}
+
+.search-result > .secondary-content.project-add {
+  color: #7e57c2 ;
+}
+
+.tag-chip {
+  border-radius: 2px !important;
+  text-overflow: ellipsis;
+  display: inline-block;
+  margin: 5px;
+}
+
+a.add-to-project {
+  margin-left: -10px;
+}
+
+div.search-box {
+  position: fixed; 
+  bottom: -20px;
+  padding-left: 10px;
+  z-index: 20;
+  width: 350px;
+  left: 40%;
+}
+
+input.shadow, input.shadow:focus {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+input.shadow:focus {
+  border: none !important;
+}
+
+.add-tag {
+  left: 77%;
+  padding: 7px;
+  padding-bottom: 9px;
+  transition: .3s all;
+  border-left: 1px solid #eeeeee;
+}
+.add-tag:hover {
+  cursor: pointer;
+  background: #26a69a;
+  color: white;
+}
+
+.input-field.suffix i {
+  position: absolute;
+  /*width: 3rem;*/
+  font-size: 2rem;
+  /*transition: color .2s;*/
+  top: 0px;
+  right: 0px;
+}
+.input-field {
+  margin-top: none !important;
+}
+
+.input-field.suffix i.active {
+  color: #26a69a;
+}
+
+.input-field.suffix input,
+.input-field.suffix textarea {
+  margin-right: 3rem;
+  /*width: 92%;*/
+  width: calc(100% - 3rem);
+}
+
+.input-field.suffix textarea {
+  padding-top: .8rem;
+}
+
+.input-field.suffix label {
+  margin-right: 3rem;
+}
+
+@media only screen and (max-width: 992px) {
+  .input-field.suffix input {
+    width: 86%;
+    width: calc(100% - 3rem);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .input-field.suffix input {
+    width: 80%;
+    width: calc(100% - 3rem);
+  }
+}
+
+
 @media (min-width: 1300px) {
   /*div.responsive-fixed {
     position: fixed;
   }*/
+}
+
+#search-main::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+#search-main::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+#search-main::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
