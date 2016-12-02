@@ -127,9 +127,51 @@ p.description {
   display: inline;
 }
 
+.btn {
+  box-shadow: none;
+}
+
 .btn:hover, .btn:focus {
-  /*box-shadow: none;*/
+  box-shadow: none;
   filter: brightness(110%);
+}
+
+p.separate-bottom {
+  padding-bottom: 10px;
+}
+
+p.separate-top {
+  padding-top: 10px;
+  border-top: 1px solid;
+}
+
+i.handle {
+  padding: 10px;
+  transition: .3s all;
+}
+
+i.handle:hover {
+  cursor: pointer;
+  background: #e0e0e0;
+}
+
+i.handle:first-child {
+  margin-right: 20px;
+}
+
+[data-letters]:before {
+  content:attr(data-letters);
+  display:inline-block;
+  font-size:1em;
+  width:2.5em;
+  height:2.5em;
+  line-height:2.5em;
+  text-align:center;
+  border-radius:50%;
+  /*background:plum;*/
+  vertical-align:middle;
+  margin-right:1em;
+  color:white;
 }
 
 .center {
@@ -157,6 +199,13 @@ div.dashboard-container {
 
 nav {
   box-shadow: none;
+}
+
+.reject {
+  color: red;  
+}
+.accept {
+  color: green;
 }
 
 @keyframes sizer {

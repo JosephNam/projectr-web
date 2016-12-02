@@ -54,7 +54,7 @@ class DashboardComponent extends React.Component {
     if (this.state.selectedProject === undefined) {
       projectView = <UserProjects projects={this.props.projects} select={this.selectProject} />
     } else {
-      projectView = <ProjectView project={this.state.selectedProject} back={this.back} />
+      projectView = <ProjectView {...this.state.selectedProject} back={this.back} />
     }
     return (
       <div className="container dashboard-container">
