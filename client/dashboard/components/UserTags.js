@@ -47,7 +47,7 @@ class TagSearchComponent extends React.Component {
         this.setState({
             query: e.target.value.trim()
         }, () => {
-            if (this.state.query.length > 3) {
+            if (this.state.query.length >= 2) {
                 this.findTags()
             } else {
                 this.setState({
