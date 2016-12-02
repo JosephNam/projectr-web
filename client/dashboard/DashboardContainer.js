@@ -8,7 +8,7 @@ import UserProjects from './components/ActiveProjects'
 import UserNotifications from './components/Notifications'
 import ProjectrNav from './components/ProjectrNav'
 import ProjectView from './components/ProjectView'
-import {UserTagsContainer} from './components/UserTags'
+import {TagsContainer} from './components/UserTags'
 
 import { fetchInfo } from '../ducks/user'
 
@@ -61,6 +61,7 @@ class DashboardComponent extends React.Component {
     } else {
       projectView = <ProjectView {...this.state.selectedProject} back={this.back} />
     }
+    const username = sessionStorage.getItem('user')
     return (
       <div className="container dashboard-container">
         <ProjectrNav />
@@ -85,7 +86,7 @@ class DashboardComponent extends React.Component {
               </div>
               <div className='row'>
                 <div className='col s12'>
-                  <UserTagsContainer username={this.props.username}></UserTagsContainer>
+                  <TagsContainer title={'My Tags'} url={'http://localhost:1337/api/users/' + username + '/tags'}></TagsContainer>
                 </div>
               </div>
             </div>

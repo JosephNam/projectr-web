@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import {Tag} from './../../match/ProjectMatchContainer'
 
-export class UserTagsContainer extends React.Component {
+export class TagsContainer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -10,8 +10,7 @@ export class UserTagsContainer extends React.Component {
     }
 
     componentDidMount() {
-        const username = sessionStorage.getItem('user')
-        fetch('http://localhost:1337/api/users/' + username + '/tags')
+        fetch(this.props.url)
             .then(response => response.json())
             .then(json => {
                 if (json.success) {
@@ -29,7 +28,7 @@ export class UserTagsContainer extends React.Component {
                 <div className='card'>
                     <div className='card-content'>
                         <span className="card-title">
-                            <p>My Tags ({this.state.tags.length})</p>
+                            <p>{this.props.title} ({this.state.tags.length})</p>
                         </span>
                         <br />
                         <div className='row card-final'>

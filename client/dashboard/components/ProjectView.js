@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import {ProjectOverview} from './../../project/ProjectOverview'
 import {ProjectRequests} from './../../project/ProjectRequests'
+import {TagsContainer} from './UserTags'
 
 class ProjectPage extends React.Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class ProjectPage extends React.Component {
             </div>
             <div id="overview" className="col s12">
               <ProjectOverview {...this.props}></ProjectOverview>
+              <TagsContainer title={`${this.props.project_name} Tags`} url={'http://localhost:1337/api/projects/' + this.props.project_id + '/tags'}></TagsContainer>
             </div>
             <div id="requests" className="col s12">
               <ProjectRequests {...this.props}></ProjectRequests>
