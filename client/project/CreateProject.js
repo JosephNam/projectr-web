@@ -40,34 +40,45 @@ class CreateProject extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <Link className="btn" to="/app/dashboard"> Back To Dashboard </Link>
-        </div>
-        <div className="row">
-          <htmlForm className="col s12">
+      <div className="valign-wrapper" style={{width: '100%', height: '100%', position: 'absolute'}}>
+        <div className="valign" style={{width: '100%'}}>
+          <div className="container">
             <div className="row">
-              <div className="input-field col s6">
-                <input onChange={this.handleInputChange} placeholder="Project Name" id="project_name" type="text" className="validate" />
-              </div>
-              <div className="input-field col s6">
-                {/*this.props.tags.map((tag, i) => (
-                  <div>
-                    <input id={tag.tag_id} value={this.state.tag_id} type="checkbox" onChange={this.handleInputChange} key={i} />
-                    <label htmlFor={tag.tag_name}> {tag.tag_name} </label>
+              <Link to="/app/dashboard" className="btn"> Back </Link>
+            </div>
+            <div className="row">
+              <div className="col s12 m6 offset-m3">
+                <div>
+                  <div className="card-content">
+                    <div className="row center">
+                      <p>
+                        Create a project
+                      </p>
+                    </div>
+                    <htmlForm>
+                      <div className="row">
+                        <div className="input-field col s12">
+                          <input onChange={this.handleInputChange} placeholder="Project Name" id="project_name" type="text" className="center input-primary" />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="input-field col s12">
+                          <textarea onChange={this.handleInputChange} placeholder="Project Description" id="project_description" type="text" className="center input-primary materialize-textarea" />
+                          <label htmlFor="project_description">Project Description</label>
+                        </div>
+                      </div>
+                    </htmlForm>
                   </div>
-                ))*/}
+                  <div>
+                    <div className="center">
+                        <button className="btn teal" onClick={this.handleRegisterSubmit}>Create</button>
+                    </div>
+                    <br/>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="row">
-              <div className="input-field col s12">
-                <textArea className="materialize-textarea" onChange={this.handleInputChange} placeholder="Project Description" id="project_description" type="password" />
-              </div>
-            </div>
-          </htmlForm>
-        </div>
-        <div className="row">
-          <button className="btn" onClick={this.handleRegisterSubmit}>Create Project</button>
+          </div>
         </div>
       </div>
     )

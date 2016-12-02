@@ -4,6 +4,7 @@
 /* global $: true */
 
 import { Map } from 'immutable'
+import { push } from 'react-router-redux'
 
 require('isomorphic-fetch')
 
@@ -47,6 +48,7 @@ export const tryCreateProject = newProject => (
       if (json.success) {
 //        dispatch(addSelf())
         dispatch(receiveCreateProject(newProject))
+        dispatch(push('/app/dashboard'))
       }
     })
   }
