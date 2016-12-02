@@ -8,6 +8,8 @@ import UserProjects from './components/ActiveProjects'
 import UserNotifications from './components/Notifications'
 import ProjectrNav from './components/ProjectrNav'
 import ProjectView from './components/ProjectView'
+import {UserTagsContainer} from './components/UserTags'
+
 import { fetchInfo } from '../ducks/user'
 
 
@@ -78,23 +80,17 @@ class DashboardComponent extends React.Component {
                   <Link className="btn" to="/app/createProject" style={{ width: '100%' }}> New </Link>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="col s8 responsive-margin">
-            {projectView}
-          </div>
-          <div className="col s2">
-            <div className="responsive-fixed">
-              <div className="card-panel center">
-                <ul>
-                  <li>
-                    <h4>Notices</h4>
-                  </li>
-                  <UserNotifications />
-                </ul>
+              <div className='row'>
+                <div className='col s12'>
+                  <UserTagsContainer username={this.props.username}></UserTagsContainer>
+                </div>
               </div>
             </div>
           </div>
+          <div className="col s10 responsive-margin">
+            {projectView}
+          </div>
+          
         </div>
       </div>
     )

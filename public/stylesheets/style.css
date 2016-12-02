@@ -186,7 +186,6 @@ i.handle:first-child {
 .input-primary {
   border: none;
   background: white;
-  /*box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);*/
 }
 input.input-primary {
    border: none;
@@ -239,13 +238,55 @@ a.notification:hover, li.notification:hover {
   background-color: transparent !important;
 }
 
+.search-box > ul {
+  border: none;
+}
+
+.search-result {
+  background: #78909c  !important;
+  border: none !important;
+  color: white !important;
+}
+
+.search-result:hover {
+  filter: brightness(125%);
+  cursor: pointer;
+}
+
+.search-result > .secondary-content {
+  color: #1de9b6;
+}
+
 .tag-chip {
   border-radius: 2px;
   text-overflow: ellipsis;
+  display: inline-block;
+  margin: 5px;
+}
+
+div.search-box {
+  position: fixed; 
+  bottom: -35px;
+  padding-left: 10px;
+  z-index: 20;
+  width: 350px;
 }
 
 @media (min-width: 1300px) {
   /*div.responsive-fixed {
     position: fixed;
   }*/
+}
+
+#search-main::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+#search-main::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+#search-main::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }

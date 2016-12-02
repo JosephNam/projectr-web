@@ -147,10 +147,8 @@ export class Tag extends React.Component {
   
   render() {
     return (
-      <div className="col s2" style={{marginRight: '20px'}}>
-        <div className='chip tag-chip' title={this.props.tag_name}>
+      <div className='chip chip-tag' title={this.props.tag_name}>
             {this.props.tag_name}
-        </div>
       </div>
     )
   }
