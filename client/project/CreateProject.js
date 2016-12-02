@@ -2,31 +2,38 @@
 /* global $: true */
 
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+
+import { tryCreateProject, fetchTags } from '../ducks/project'
 
 const propTypes = {
-  tryCreateProject: PropTypes.function
+  tryCreateProject: PropTypes.func,
+  tags: PropTypes.array
 }
 
 class CreateProject extends React.Component {
   constructor(props) {
     super(props)
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleSubmission = this.handleSubmission.bind(this)
+    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
     this.state = {
-      projectName: ''
+      project_name: '',
+      project_description: '',
+      tags: props.tags
     }
   }
-
+  
   componentDidMount() {
     this.state = this.state
-    $(document).ready(() => $('select').material_select())
+    console.log(this.props)
   }
 
   handleInputChange(event) {
-    this.state[`${event.target.id}`] = event.target.value
+    this.state[`${event.target.id}`] = event.value
+    console.log(this.state)
   }
 
-  handleSubmission() {
+  handleRegisterSubmit() {
     this.props.tryCreateProject(this.state)
   }
 
@@ -37,28 +44,20 @@ class CreateProject extends React.Component {
           <htmlForm className="col s12">
             <div className="row">
               <div className="input-field col s6">
-                <input onChange={this.handleInputChange} placeholder="Project Name" id="projectName" type="text" className="validate" />
+                <input onChange={this.handleInputChange} placeholder="Project Name" id="project_name" type="text" className="validate" />
               </div>
               <div className="input-field col s6">
-                <select multiple placeholder="Tags">
-                  <option value="tag1">
-                    Tag 1
-                  </option>
-                  <option value="tag2">
-                    Tag 2
-                  </option>
-                  <option value="tag3">
-                    Tag 3
-                  </option>
-                  <option value="tag4">
-                    Tag 4
-                  </option>
-                </select>
+                {this.props.tags.map((tag, i) => (
+                  <div>
+                    <input id={tag.tag_id} value={this.state.tag_id} type="checkbox" onChange={this.handleInputChange} key={i} />
+                    <label htmlFor={tag.tag_name}> {tag.tag_name} </label>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="row">
               <div className="input-field col s12">
-                <textArea className="materialize-textarea" onChange={this.handleInputChange} placeholder="Project Description" id="textArea" type="password" />
+                <textArea className="materialize-textarea" onChange={this.handleInputChange} placeholder="Project Description" id="project_description" type="password" />
               </div>
             </div>
           </htmlForm>
@@ -71,6 +70,21 @@ class CreateProject extends React.Component {
   }
 }
 
+const mapStateToProps = state => (
+  {
+    tags: state.get('project').get('tags')
+  }
+)
+
+const mapDispatchToProps = dispatch => ({
+  tryCreateProject(p) {
+    dispatch(tryCreateProject(p))
+  }
+})
+
 CreateProject.propTypes = propTypes
 
-export default CreateProject
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateProject)
