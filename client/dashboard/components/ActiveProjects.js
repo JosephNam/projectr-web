@@ -24,6 +24,8 @@ class ProjectCard extends React.Component {
     }
     
     onClick() {
+      sessionStorage.setItem('currentProject', this.props.project_id)
+      console.log(this.props)
       this.props.selectProject({
         project_name: this.props.project_name,
         project_description: this.props.project_description,

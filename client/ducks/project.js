@@ -45,6 +45,7 @@ export const tryCreateProject = newProject => (
     .then(res => res.json())
     .then((json) => {
       if (json.success) {
+//        dispatch(addSelf())
         dispatch(receiveCreateProject(newProject))
       }
     })
@@ -73,7 +74,6 @@ export const fetchTags = () => (
       console.log('tags api request is,', json)
       if (json.success === true) {
         dispatch(receiveTags(json.result))
-        $(document).ready(() => $('select').material_select())
       }
     })
   }

@@ -40,7 +40,7 @@ export class TagsContainer extends React.Component {
                         </div>
                     </div>
                 </div>
-                <TagSearchComponent> </TagSearchComponent>
+                <TagSearchComponent projectId={this.props.projectId} />
             </div>
            
         )
