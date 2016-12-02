@@ -84,18 +84,24 @@ class TagSearchComponent extends React.Component {
     }
 
     render() {
+        const projectId = sessionStorage.getItem('currentProject')
         return (
-            <div className='search-box'>
-                <ul className='collection'>
-                      <div id='search-main' style={{maxHeight: '320px', overflow: 'auto'}}>
-                        {this.state.results.map((r, i) => {
-                          return <TagMatch {...r} key={i}> </TagMatch>
-                        })}
-                      </div>
-                      <input type='text' className='input-primary' style={{paddingLeft: '10px'}} placeholder='Search for tags' onKeyUp={this.onChange.bind(this)}/>
-                </ul>
-               
+            <div>
+                <div className='search-box'>
+                    <ul className='collection'>
+                        <div id='search-main' style={{maxHeight: '320px', overflow: 'auto'}}>
+                            {this.state.results.map((r, i) => {
+                            return <TagMatch {...r} key={i} projectId={projectId}> </TagMatch>
+                            })}
+                        </div>
+                        <input type='text' className='input-primary inline shadow' style={{paddingLeft: '10px'}} placeholder='Search for tags' onKeyUp={this.onChange.bind(this)}/>
+                        
+                    </ul>
+                </div>
+                
             </div>
+            
+            
         )
     }
 }
@@ -104,7 +110,8 @@ class TagMatch extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            disabled: false
+            disabled: false,
+            disabledProject: false
         }
     }
 
@@ -135,10 +142,40 @@ class TagMatch extends React.Component {
         .catch(err => console.log(err))
     }
 
+    onClickAddTagToProject() {
+        const url = 'http://localhost:1337/api/projects/' + this.props.projectId + '/tags';
+        const body = JSON.stringify({
+            tagId: this.props.tag_id
+        })
+        const headers = {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Projectr-Token': sessionStorage.getItem('projectrToken')
+        }
+        fetch(url, {
+            method: 'POST',
+            body,
+            headers
+        })
+        .then(response => response.json())
+        .then(json => {
+            if (json.success) {
+                this.setState({
+                    disabledProject: true
+                })
+            }
+        })
+        .catch(err => console.log(err))
+    }
+
     render() {
         return (
             <li className='collection-item search-result'>{this.props.tag_name}
-                <a disabled={this.state.disabled} className="secondary-content" onClick={this.onClick.bind(this)}><i className="material-icons">add</i></a>
+                {
+                    this.props.projectId ? <a disabled={this.state.disabledProject} className="secondary-content project-add" title={`Add ${this.props.tag_name} to the current project.`} onClick={this.onClickAddTagToProject.bind(this)}><i className="material-icons">{this.state.disabledProject ? 'done' : 'add'}</i></a>
+                        : ''
+                }
+                <a disabled={this.state.disabled} className="secondary-content" title={`Add ${this.props.tag_name} to your profile.`} onClick={this.onClick.bind(this)}><i className="material-icons">{this.state.disabled ? 'done' : 'add'}</i></a>
             </li>
         )
     }

@@ -256,13 +256,17 @@ a.notification:hover, li.notification:hover {
 .search-result > .secondary-content {
   color: #1de9b6;
   transition: .4s all;
+  margin-left: 20px;
 }
 .search-result > .secondary-content[disabled] {
-  color: red;
   transition: .4s all;
 }
 .search-result > .secondary-content:hover {
   transform: scale(1.55, 1.55)
+}
+
+.search-result > .secondary-content.project-add {
+  color: #7e57c2 ;
 }
 
 .tag-chip {
@@ -272,14 +276,84 @@ a.notification:hover, li.notification:hover {
   margin: 5px;
 }
 
+a.add-to-project {
+  margin-left: -10px;
+}
+
 div.search-box {
   position: fixed; 
-  bottom: -35px;
+  bottom: -20px;
   padding-left: 10px;
   z-index: 20;
   width: 350px;
   left: 40%;
 }
+
+input.shadow, input.shadow:focus {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+input.shadow:focus {
+  border: none !important;
+}
+
+.add-tag {
+  left: 77%;
+  padding: 7px;
+  padding-bottom: 9px;
+  transition: .3s all;
+  border-left: 1px solid #eeeeee;
+}
+.add-tag:hover {
+  cursor: pointer;
+  background: #26a69a;
+  color: white;
+}
+
+.input-field.suffix i {
+  position: absolute;
+  /*width: 3rem;*/
+  font-size: 2rem;
+  /*transition: color .2s;*/
+  top: 0px;
+  right: 0px;
+}
+.input-field {
+  margin-top: none !important;
+}
+
+.input-field.suffix i.active {
+  color: #26a69a;
+}
+
+.input-field.suffix input,
+.input-field.suffix textarea {
+  margin-right: 3rem;
+  /*width: 92%;*/
+  width: calc(100% - 3rem);
+}
+
+.input-field.suffix textarea {
+  padding-top: .8rem;
+}
+
+.input-field.suffix label {
+  margin-right: 3rem;
+}
+
+@media only screen and (max-width: 992px) {
+  .input-field.suffix input {
+    width: 86%;
+    width: calc(100% - 3rem);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .input-field.suffix input {
+    width: 80%;
+    width: calc(100% - 3rem);
+  }
+}
+
 
 @media (min-width: 1300px) {
   /*div.responsive-fixed {

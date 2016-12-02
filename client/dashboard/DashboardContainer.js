@@ -31,6 +31,7 @@ class DashboardComponent extends React.Component {
   }
 
   componentDidMount() {
+    sessionStorage.removeItem('currentProject')
     setTimeout(() => {
       if (this.props.username === undefined) {
         console.log('hello')
@@ -43,12 +44,14 @@ class DashboardComponent extends React.Component {
     this.setState({
       selectedProject: project
     })
+    sessionStorage.setItem('currentProject', project.project_id)
   }
 
   back() {
     this.setState({
       selectedProject: undefined
     })
+    sessionStorage.removeItem('currentProject')
   }
 
   render() {
