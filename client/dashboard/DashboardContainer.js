@@ -67,7 +67,7 @@ class DashboardComponent extends React.Component {
         <ProjectrNav />
         <div className="row" style={{ marginTop: '20px' }}>
           <div className="col s2 user-panel">
-            <div className='responsive-fixed'>
+            <div className="responsive-fixed">
               <div className="card-panel indigo lighten-5 center">
                 <ul>
                   <li>

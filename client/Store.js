@@ -6,17 +6,20 @@ import thunk from 'redux-thunk'
 
 import routerReducer from './RouteReducer'
 import user from './ducks/user'
+import project, { fetchTags } from './ducks/project'
 
 const middlewares = [thunk, routerMiddleware(browserHistory)]
 
 const store = createStore(
   combineReducers({
+    project,
     user,
     routing: routerReducer
   }),
   applyMiddleware(...middlewares)
 )
 
+store.dispatch(fetchTags())
 
 console.log(store.getState())
 

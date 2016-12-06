@@ -2,75 +2,104 @@
 /* global $: true */
 
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
+
+import { tryCreateProject, fetchTags } from '../ducks/project'
+import { TagSearchComponent } from '../dashboard/components/UserTags'
 
 const propTypes = {
-  tryCreateProject: PropTypes.function
+  tryCreateProject: PropTypes.func,
+  tags: PropTypes.array
 }
 
 class CreateProject extends React.Component {
   constructor(props) {
     super(props)
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleSubmission = this.handleSubmission.bind(this)
+    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
     this.state = {
-      projectName: ''
+      project_name: '',
+      project_description: ''
     }
   }
-
+  
   componentDidMount() {
     this.state = this.state
-    $(document).ready(() => $('select').material_select())
+    console.log(this.props)
   }
 
   handleInputChange(event) {
     this.state[`${event.target.id}`] = event.target.value
+    console.log(this.state)
   }
 
-  handleSubmission() {
+  handleRegisterSubmit() {
     this.props.tryCreateProject(this.state)
   }
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <htmlForm className="col s12">
+      <div className="valign-wrapper" style={{width: '100%', height: '100%', position: 'absolute'}}>
+        <div className="valign" style={{width: '100%'}}>
+          <div className="container">
             <div className="row">
-              <div className="input-field col s6">
-                <input onChange={this.handleInputChange} placeholder="Project Name" id="projectName" type="text" className="validate" />
-              </div>
-              <div className="input-field col s6">
-                <select multiple placeholder="Tags">
-                  <option value="tag1">
-                    Tag 1
-                  </option>
-                  <option value="tag2">
-                    Tag 2
-                  </option>
-                  <option value="tag3">
-                    Tag 3
-                  </option>
-                  <option value="tag4">
-                    Tag 4
-                  </option>
-                </select>
-              </div>
+              <Link to="/app/dashboard" className="btn"> Back </Link>
             </div>
             <div className="row">
-              <div className="input-field col s12">
-                <textArea className="materialize-textarea" onChange={this.handleInputChange} placeholder="Project Description" id="textArea" type="password" />
+              <div className="col s12 m6 offset-m3">
+                <div>
+                  <div className="card-content">
+                    <div className="row center">
+                      <p>
+                        Create a project
+                      </p>
+                    </div>
+                    <htmlForm>
+                      <div className="row">
+                        <div className="input-field col s12">
+                          <input onChange={this.handleInputChange} placeholder="Project Name" id="project_name" type="text" className="center input-primary" />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="input-field col s12">
+                          <textarea onChange={this.handleInputChange} placeholder="Project Description" id="project_description" type="text" className="center input-primary materialize-textarea" />
+                          <label htmlFor="project_description">Project Description</label>
+                        </div>
+                      </div>
+                    </htmlForm>
+                  </div>
+                  <div>
+                    <div className="center">
+                        <button className="btn teal" onClick={this.handleRegisterSubmit}>Create</button>
+                    </div>
+                    <br/>
+                  </div>
+                </div>
               </div>
             </div>
-          </htmlForm>
-        </div>
-        <div className="row">
-          <button className="btn" onClick={this.handleRegisterSubmit}>Create Project</button>
+          </div>
         </div>
       </div>
     )
   }
 }
 
+const mapStateToProps = state => (
+  {
+    tags: state.get('project').get('tags')
+  }
+)
+
+const mapDispatchToProps = dispatch => ({
+  tryCreateProject(p) {
+    dispatch(tryCreateProject(p))
+  }
+})
+
 CreateProject.propTypes = propTypes
 
-export default CreateProject
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateProject)
