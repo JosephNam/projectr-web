@@ -1,4 +1,13 @@
-# Projectr README 
+# Projectr
+
+This README contains links to documentation on Projectr's main backend API.
+
+##[API Documentation](api_docs/api.md)
+- Projectr exposes a basic REST API.
+- All protected routes expect a JSON web token in the query string, request body, or as a cookie. An API call
+to a protected route without a JWT will send back an error with status code 403.
+- This documentation contains important information about what each endpoint expects and what the server
+will respond with.
 
 # Release Notes
 
@@ -51,6 +60,11 @@ upon files being modified.
 - Within both repositories, run `npm start` to start both the web and api servers. Again, if using a Unix-based system, you
 may need to run the above with root privileges. Open a web browser and visit http://localhost:3000/app/login to view Projectr's home
 page. 
+
+### Troubleshooting
+
+- After running `npm install`, the server may crash from unmet dependencies. To remedy this issue, get the name of the unmet dependency and manually type
+`npm install {#dependencyName} --save` into the terminal. 
 
 
 
